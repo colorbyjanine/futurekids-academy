@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // ============================================================================
-// FUTUREKIDS ACADEMY - Organic Pastel Design
+// FUTUREKIDS ACADEMY - Organic Pastel Design v2
 // ============================================================================
 
 interface Lesson {
@@ -465,10 +465,10 @@ export default function FutureKidsAcademy() {
       <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 flex items-center justify-center p-4">
         <div className="text-center">
           <div className="text-8xl mb-6 animate-bounce">🎉</div>
-          <h1 className="font-display text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 mb-4">
+          <h1 className="font-display text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 mb-4">
             LEVEL UP!
           </h1>
-          <p className="text-2xl text-gray-600 font-medium">You are now Level {level}!</p>
+          <p className="text-2xl text-gray-600 font-bold">You are now Level {level}!</p>
           <p className="text-lg text-gray-400 mt-4">Amazing work, superstar! ⭐</p>
         </div>
       </div>
@@ -483,27 +483,27 @@ export default function FutureKidsAcademy() {
         <header className="p-4">
           <button 
             onClick={() => setSelectedLesson(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-medium"
+            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
           >
-            <span className="text-xl">←</span> Back
+            <span className="text-2xl">←</span> Back
           </button>
         </header>
         
         <main className="max-w-md mx-auto px-5 py-4">
           <div className={`bubble ${selectedWorld.bgClass} p-8 text-center mb-6`}>
-            <span className="text-6xl block mb-4 animate-float">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl font-bold text-gray-800 mb-2">{selectedLesson.title}</h1>
-            <p className="text-gray-600">{selectedLesson.description}</p>
+            <span className="text-7xl block mb-4 animate-float">{selectedTopic.emoji}</span>
+            <h1 className="font-display text-2xl font-black text-gray-800 mb-2">{selectedLesson.title}</h1>
+            <p className="text-gray-600 font-semibold">{selectedLesson.description}</p>
           </div>
 
           <div className="bubble bg-white p-6 mb-6">
             <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl flex items-center justify-center mb-4">
               <div className="text-center">
-                <span className="text-5xl block mb-2">🎬</span>
-                <p className="text-gray-400 text-sm">Video lesson coming soon!</p>
+                <span className="text-6xl block mb-2">🎬</span>
+                <p className="text-gray-400 font-semibold">Video lesson coming soon!</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm text-gray-500">
+            <div className="flex items-center justify-between text-sm text-gray-500 font-bold">
               <span>⏱️ {selectedLesson.duration}</span>
               <span>⭐ +{selectedLesson.xp} XP</span>
             </div>
@@ -511,17 +511,17 @@ export default function FutureKidsAcademy() {
 
           {isComplete ? (
             <div className="bubble bg-gradient-to-r from-green-100 to-emerald-100 p-6 text-center">
-              <span className="text-4xl block mb-2">✅</span>
-              <p className="font-display font-bold text-green-700 text-lg">All Done!</p>
-              <p className="text-green-600 text-sm">You earned {selectedLesson.xp} XP!</p>
+              <span className="text-5xl block mb-2">✅</span>
+              <p className="font-display font-black text-green-700 text-xl">All Done!</p>
+              <p className="text-green-600 font-bold">You earned {selectedLesson.xp} XP!</p>
             </div>
           ) : (
             <button
               onClick={() => completeLesson(selectedLesson)}
-              className={`w-full bubble bg-gradient-to-r ${selectedWorld.gradient} p-5 text-center`}
+              className={`w-full bubble bg-gradient-to-r ${selectedWorld.gradient} p-6 text-center`}
             >
-              <span className="font-display font-bold text-gray-800 text-lg">Complete Lesson ✨</span>
-              <p className="text-gray-600 text-sm mt-1">Earn {selectedLesson.xp} XP!</p>
+              <span className="font-display font-black text-gray-800 text-xl">Complete Lesson ✨</span>
+              <p className="text-gray-600 font-bold mt-1">Earn {selectedLesson.xp} XP!</p>
             </button>
           )}
         </main>
@@ -539,20 +539,20 @@ export default function FutureKidsAcademy() {
         <header className="p-4">
           <button 
             onClick={() => setSelectedTopic(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-medium"
+            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
           >
-            <span className="text-xl">←</span> Back
+            <span className="text-2xl">←</span> Back
           </button>
         </header>
         
         <main className="max-w-md mx-auto px-5 py-4">
           <div className={`bubble ${selectedWorld.bgClass} p-6 text-center mb-6`}>
-            <span className="text-5xl block mb-3">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl font-bold text-gray-800">{selectedTopic.name}</h1>
-            <p className="text-gray-600 text-sm mt-2">{done} of {total} lessons done</p>
-            <div className="w-full bg-white/50 rounded-full h-3 mt-4">
+            <span className="text-6xl block mb-3">{selectedTopic.emoji}</span>
+            <h1 className="font-display text-2xl font-black text-gray-800">{selectedTopic.name}</h1>
+            <p className="text-gray-600 font-bold mt-2">{done} of {total} lessons done</p>
+            <div className="w-full bg-white/50 rounded-full h-4 mt-4">
               <div 
-                className="h-3 rounded-full bg-white/80 progress-fill"
+                className="h-4 rounded-full bg-white/80 progress-fill"
                 style={{ width: `${(done / total) * 100}%` }}
               />
             </div>
@@ -568,28 +568,28 @@ export default function FutureKidsAcademy() {
                   key={lesson.id}
                   onClick={() => !isLocked && setSelectedLesson(lesson)}
                   disabled={isLocked}
-                  className={`w-full bubble p-4 flex items-center gap-4 text-left ${
+                  className={`w-full bubble p-5 flex items-center gap-4 text-center ${
                     isLocked ? 'bg-gray-100 opacity-60' : 
                     isDone ? 'bg-gradient-to-r from-green-100 to-emerald-100' : 
                     'bg-white'
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold ${
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-black ${
                     isLocked ? 'bg-gray-200 text-gray-400' :
                     isDone ? 'bg-green-400 text-white' :
                     `bg-gradient-to-br ${selectedWorld.gradient} text-gray-700`
                   }`}>
                     {isLocked ? '🔒' : isDone ? '✓' : idx + 1}
                   </div>
-                  <div className="flex-1">
-                    <p className={`font-semibold ${isDone ? 'text-green-700' : 'text-gray-800'}`}>
+                  <div className="flex-1 text-left">
+                    <p className={`font-bold text-lg ${isDone ? 'text-green-700' : 'text-gray-800'}`}>
                       {lesson.title}
                     </p>
-                    <p className="text-gray-500 text-sm">{lesson.description}</p>
+                    <p className="text-gray-500 font-semibold text-sm">{lesson.description}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-gray-400">{lesson.duration}</p>
-                    <p className={`text-sm font-semibold ${isDone ? 'text-green-500' : 'text-amber-500'}`}>
+                    <p className="text-xs text-gray-400 font-bold">{lesson.duration}</p>
+                    <p className={`font-black ${isDone ? 'text-green-500' : 'text-amber-500'}`}>
                       {isDone ? '✓ Done' : `+${lesson.xp}`}
                     </p>
                   </div>
@@ -609,17 +609,17 @@ export default function FutureKidsAcademy() {
         <header className="p-4">
           <button 
             onClick={() => setSelectedWorld(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-medium"
+            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
           >
-            <span className="text-xl">←</span> All Worlds
+            <span className="text-2xl">←</span> All Worlds
           </button>
         </header>
         
         <main className="max-w-md mx-auto px-5 py-4">
-          <div className={`world-bubble bg-gradient-to-br ${selectedWorld.gradient} p-8 text-center mb-8`}>
-            <span className="text-6xl block mb-4 animate-float">{selectedWorld.emoji}</span>
-            <h1 className="font-display text-3xl font-bold text-gray-800">{selectedWorld.name}</h1>
-            <p className="text-gray-600 mt-2">{selectedWorld.description}</p>
+          <div className={`world-bubble bg-gradient-to-br ${selectedWorld.gradient} p-10 text-center mb-8`}>
+            <span className="text-7xl block mb-4 animate-float">{selectedWorld.emoji}</span>
+            <h1 className="font-display text-3xl font-black text-gray-800">{selectedWorld.name}</h1>
+            <p className="text-gray-600 font-bold mt-2">{selectedWorld.description}</p>
           </div>
 
           <div className="space-y-3">
@@ -632,14 +632,14 @@ export default function FutureKidsAcademy() {
                 <button
                   key={topic.id}
                   onClick={() => setSelectedTopic(topic)}
-                  className="w-full bubble bg-white p-5 flex items-center gap-4 text-left"
+                  className="w-full bubble bg-white p-5 flex items-center gap-4 text-center"
                 >
-                  <span className="text-3xl">{topic.emoji}</span>
-                  <div className="flex-1">
-                    <p className="font-semibold text-gray-800">{topic.name}</p>
-                    <p className="text-gray-500 text-sm">{done}/{total} lessons</p>
+                  <span className="text-4xl">{topic.emoji}</span>
+                  <div className="flex-1 text-left">
+                    <p className="font-bold text-lg text-gray-800">{topic.name}</p>
+                    <p className="text-gray-500 font-semibold">{done}/{total} lessons</p>
                   </div>
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold ${
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black ${
                     pct === 100 ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-500'
                   }`}>
                     {pct === 100 ? '✓' : `${pct}%`}
@@ -659,45 +659,52 @@ export default function FutureKidsAcademy() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFF9F5] via-[#FFF0E8] to-[#F5F0FF]">
-      {/* Header */}
-      <header className="px-5 pt-10 pb-6">
+      {/* Cool Header with Logo */}
+      <header className="px-5 pt-8 pb-6">
         <div className="max-w-md mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <p className="text-gray-500 text-sm font-medium">Welcome back! 👋</p>
-              <h1 className="font-display text-3xl font-bold text-gray-800">FutureKids</h1>
+          {/* Logo & Title */}
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-400 via-pink-400 to-orange-400 shadow-xl mb-4">
+              <span className="text-4xl">🚀</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="bubble bg-gradient-to-r from-orange-100 to-amber-100 px-4 py-2 flex items-center gap-2">
-                <span className="text-lg">🔥</span>
-                <span className="font-bold text-orange-600">{streak}</span>
-              </div>
+            <h1 className="font-display text-4xl font-black bg-gradient-to-r from-violet-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
+              FutureKids
+            </h1>
+            <p className="text-gray-500 font-bold mt-1">Learn. Grow. Succeed! ✨</p>
+          </div>
+
+          {/* Stats Row */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="bubble bg-gradient-to-r from-orange-100 to-amber-100 px-5 py-3 flex items-center gap-2">
+              <span className="text-2xl">🔥</span>
+              <span className="font-black text-orange-600 text-lg">{streak} day streak</span>
+            </div>
+            <div className="bubble bg-gradient-to-r from-yellow-100 to-amber-100 px-5 py-3 flex items-center gap-2">
+              <span className="text-2xl">⭐</span>
+              <span className="font-black text-amber-600 text-lg">{xp} XP</span>
             </div>
           </div>
 
-          {/* XP Card */}
-          <div className="bubble bg-white p-5">
+          {/* Level Card */}
+          <div className="bubble bg-white p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-300 via-orange-400 to-pink-500 flex items-center justify-center text-3xl font-black text-white shadow-lg">
                   {level}
                 </div>
                 <div>
-                  <p className="font-display font-bold text-gray-800 text-lg">Level {level}</p>
-                  <p className="text-gray-500 text-sm">{xp} XP total</p>
+                  <p className="font-display font-black text-gray-800 text-xl">Level {level}</p>
+                  <p className="text-gray-500 font-bold">Keep going! 💪</p>
                 </div>
               </div>
-              <div className="text-right">
-                <p className="font-bold text-amber-500 text-xl">⭐ {xp}</p>
-              </div>
             </div>
-            <div className="w-full bg-gray-100 rounded-full h-4">
+            <div className="w-full bg-gray-100 rounded-full h-5">
               <div 
-                className="h-4 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 progress-fill"
+                className="h-5 rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 progress-fill"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <p className="text-gray-400 text-xs mt-2 text-right">{100 - (xp % 100)} XP to Level {level + 1}</p>
+            <p className="text-gray-400 font-bold text-sm mt-2 text-center">{100 - (xp % 100)} XP to Level {level + 1}</p>
           </div>
         </div>
       </header>
@@ -706,9 +713,9 @@ export default function FutureKidsAcademy() {
         {/* School Essentials */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-5">
-            <div className="h-px flex-1 bg-gradient-to-r from-blue-200 to-transparent" />
-            <h2 className="font-display font-bold text-blue-600 text-sm uppercase tracking-wider">🎓 School Stuff</h2>
-            <div className="h-px flex-1 bg-gradient-to-l from-blue-200 to-transparent" />
+            <div className="h-px flex-1 bg-gradient-to-r from-blue-300 to-transparent" />
+            <h2 className="font-display font-black text-blue-600 text-lg">🎓 School Stuff</h2>
+            <div className="h-px flex-1 bg-gradient-to-l from-blue-300 to-transparent" />
           </div>
           <div className="grid grid-cols-2 gap-4">
             {schoolWorlds.map(world => {
@@ -718,11 +725,11 @@ export default function FutureKidsAcademy() {
                 <button
                   key={world.id}
                   onClick={() => setSelectedWorld(world)}
-                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-5 text-left`}
+                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-6 text-center`}
                 >
-                  <span className="text-4xl block mb-3">{world.emoji}</span>
-                  <p className="font-display font-bold text-gray-800">{world.name}</p>
-                  <p className="text-gray-600 text-xs mt-1">{done}/{total} lessons</p>
+                  <span className="text-5xl block mb-3">{world.emoji}</span>
+                  <p className="font-display font-black text-gray-800 text-lg">{world.name}</p>
+                  <p className="text-gray-600 font-bold text-sm mt-1">{done}/{total} lessons</p>
                 </button>
               );
             })}
@@ -732,11 +739,11 @@ export default function FutureKidsAcademy() {
         {/* Future Skills */}
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-px flex-1 bg-gradient-to-r from-purple-200 to-transparent" />
-            <h2 className="font-display font-bold text-purple-600 text-sm uppercase tracking-wider">🚀 Future Skills</h2>
-            <div className="h-px flex-1 bg-gradient-to-l from-purple-200 to-transparent" />
+            <div className="h-px flex-1 bg-gradient-to-r from-purple-300 to-transparent" />
+            <h2 className="font-display font-black text-purple-600 text-lg">🚀 Future Skills</h2>
+            <div className="h-px flex-1 bg-gradient-to-l from-purple-300 to-transparent" />
           </div>
-          <p className="text-center text-gray-500 text-sm mb-5">What school won&apos;t teach you! 💡</p>
+          <p className="text-center text-gray-500 font-bold mb-5">What school won&apos;t teach you! 💡</p>
           <div className="grid grid-cols-2 gap-4">
             {futureWorlds.map(world => {
               const total = world.topics.reduce((a, t) => a + t.lessons.length, 0);
@@ -745,11 +752,11 @@ export default function FutureKidsAcademy() {
                 <button
                   key={world.id}
                   onClick={() => setSelectedWorld(world)}
-                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-5 text-left`}
+                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-6 text-center`}
                 >
-                  <span className="text-4xl block mb-3">{world.emoji}</span>
-                  <p className="font-display font-bold text-gray-800">{world.name}</p>
-                  <p className="text-gray-600 text-xs mt-1">{done}/{total} lessons</p>
+                  <span className="text-5xl block mb-3">{world.emoji}</span>
+                  <p className="font-display font-black text-gray-800 text-lg">{world.name}</p>
+                  <p className="text-gray-600 font-bold text-sm mt-1">{done}/{total} lessons</p>
                 </button>
               );
             })}
@@ -757,7 +764,7 @@ export default function FutureKidsAcademy() {
         </div>
       </main>
 
-      <footer className="text-center py-8 text-gray-400 text-sm">
+      <footer className="text-center py-8 text-gray-400 font-bold">
         Made with 💜 for Carter, Kingston & Sister
       </footer>
     </div>
