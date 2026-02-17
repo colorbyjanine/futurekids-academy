@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-// ============================================================================
-// FUTUREKIDS ACADEMY - Organic Pastel Design v2
-// ============================================================================
-
+// Types
 interface Lesson {
   id: string;
   title: string;
@@ -25,399 +22,254 @@ interface World {
   id: string;
   name: string;
   emoji: string;
-  gradient: string;
-  bgClass: string;
+  accent: string;
   description: string;
   topics: Topic[];
 }
 
-// ============================================================================
-// CURRICULUM DATA
-// ============================================================================
-
+// Curriculum Data
 const worldsData: World[] = [
-  // SCHOOL ESSENTIALS
   {
-    id: 'math',
-    name: 'Math World',
-    emoji: '🔢',
-    gradient: 'from-sky-200 via-blue-200 to-indigo-200',
-    bgClass: 'bg-gradient-to-br from-sky-100 to-blue-100',
-    description: 'Numbers, shapes & problem solving!',
+    id: 'math', name: 'Math', emoji: '✨', accent: 'accent-blue',
+    description: 'Numbers, shapes & problem solving',
     topics: [
-      {
-        id: 'counting', name: 'Counting & Numbers', emoji: '1️⃣',
-        lessons: [
-          { id: 'm1', title: 'Counting 1-10', description: 'Learn to count with fun objects!', duration: '5 min', xp: 10 },
-          { id: 'm2', title: 'Counting 11-20', description: 'Keep going higher!', duration: '5 min', xp: 10 },
-          { id: 'm3', title: 'Counting to 100', description: 'You can count super high!', duration: '8 min', xp: 15 },
-          { id: 'm4', title: 'Skip Counting', description: 'Count by 2s, 5s, and 10s', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'addition', name: 'Addition Fun', emoji: '➕',
-        lessons: [
-          { id: 'a1', title: 'Adding with Pictures', description: 'Put things together!', duration: '5 min', xp: 10 },
-          { id: 'a2', title: 'Adding to 10', description: 'Master single digits!', duration: '8 min', xp: 15 },
-          { id: 'a3', title: 'Adding to 20', description: 'Getting bigger!', duration: '8 min', xp: 15 },
-          { id: 'a4', title: 'Double Digits', description: 'Add bigger numbers!', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'subtraction', name: 'Subtraction', emoji: '➖',
-        lessons: [
-          { id: 's1', title: 'Taking Away', description: 'Learn what\'s left!', duration: '5 min', xp: 10 },
-          { id: 's2', title: 'Subtracting to 10', description: 'Single digit subtraction', duration: '8 min', xp: 15 },
-          { id: 's3', title: 'Subtracting to 20', description: 'Bigger numbers!', duration: '8 min', xp: 15 },
-        ]
-      },
-      {
-        id: 'multiplication', name: 'Multiplication', emoji: '✖️',
-        lessons: [
-          { id: 'x1', title: 'Groups of Things', description: 'What is multiplication?', duration: '8 min', xp: 15 },
-          { id: 'x2', title: 'Times Tables 1-5', description: 'Memorize the basics!', duration: '10 min', xp: 20 },
-          { id: 'x3', title: 'Times Tables 6-10', description: 'Keep going!', duration: '10 min', xp: 20 },
-          { id: 'x4', title: 'Times Tables 11-12', description: 'Almost done!', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'fractions', name: 'Fractions', emoji: '🍕',
-        lessons: [
-          { id: 'f1', title: 'What is a Fraction?', description: 'Parts of a whole!', duration: '8 min', xp: 15 },
-          { id: 'f2', title: 'Halves & Quarters', description: 'Cut it up!', duration: '8 min', xp: 15 },
-          { id: 'f3', title: 'Comparing Fractions', description: 'Which is bigger?', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'shapes', name: 'Shapes', emoji: '🔷',
-        lessons: [
-          { id: 'g1', title: 'Basic Shapes', description: 'Circles, squares, triangles!', duration: '5 min', xp: 10 },
-          { id: 'g2', title: '3D Shapes', description: 'Cubes, spheres, cones!', duration: '8 min', xp: 15 },
-          { id: 'g3', title: 'Perimeter & Area', description: 'Measure shapes!', duration: '10 min', xp: 20 },
-        ]
-      },
+      { id: 'counting', name: 'Counting', emoji: '🔢', lessons: [
+        { id: 'm1', title: 'Counting 1-10', description: 'Learn to count with objects', duration: '5 min', xp: 10 },
+        { id: 'm2', title: 'Counting 11-20', description: 'Keep going higher', duration: '5 min', xp: 10 },
+        { id: 'm3', title: 'Counting to 100', description: 'Count super high', duration: '8 min', xp: 15 },
+        { id: 'm4', title: 'Skip Counting', description: 'By 2s, 5s, and 10s', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'addition', name: 'Addition', emoji: '➕', lessons: [
+        { id: 'a1', title: 'Adding Pictures', description: 'Put things together', duration: '5 min', xp: 10 },
+        { id: 'a2', title: 'Adding to 10', description: 'Single digits', duration: '8 min', xp: 15 },
+        { id: 'a3', title: 'Adding to 20', description: 'Getting bigger', duration: '8 min', xp: 15 },
+        { id: 'a4', title: 'Double Digits', description: 'Big numbers', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'subtraction', name: 'Subtraction', emoji: '➖', lessons: [
+        { id: 's1', title: 'Taking Away', description: 'What\'s left', duration: '5 min', xp: 10 },
+        { id: 's2', title: 'Subtract to 10', description: 'Single digits', duration: '8 min', xp: 15 },
+        { id: 's3', title: 'Subtract to 20', description: 'Bigger numbers', duration: '8 min', xp: 15 },
+      ]},
+      { id: 'multiply', name: 'Multiplication', emoji: '✖️', lessons: [
+        { id: 'x1', title: 'Groups', description: 'What is multiplication', duration: '8 min', xp: 15 },
+        { id: 'x2', title: 'Tables 1-5', description: 'The basics', duration: '10 min', xp: 20 },
+        { id: 'x3', title: 'Tables 6-10', description: 'Keep going', duration: '10 min', xp: 20 },
+        { id: 'x4', title: 'Tables 11-12', description: 'Almost done', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'fractions', name: 'Fractions', emoji: '🍕', lessons: [
+        { id: 'f1', title: 'What is a Fraction', description: 'Parts of a whole', duration: '8 min', xp: 15 },
+        { id: 'f2', title: 'Halves & Quarters', description: 'Cut it up', duration: '8 min', xp: 15 },
+        { id: 'f3', title: 'Comparing', description: 'Which is bigger', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'shapes', name: 'Shapes', emoji: '🔷', lessons: [
+        { id: 'g1', title: 'Basic Shapes', description: 'Circles, squares, triangles', duration: '5 min', xp: 10 },
+        { id: 'g2', title: '3D Shapes', description: 'Cubes, spheres, cones', duration: '8 min', xp: 15 },
+        { id: 'g3', title: 'Perimeter & Area', description: 'Measure shapes', duration: '10 min', xp: 20 },
+      ]},
     ]
   },
   {
-    id: 'reading',
-    name: 'Reading Land',
-    emoji: '📚',
-    gradient: 'from-pink-200 via-rose-200 to-red-200',
-    bgClass: 'bg-gradient-to-br from-pink-100 to-rose-100',
-    description: 'Words, stories & writing!',
+    id: 'reading', name: 'Reading', emoji: '📖', accent: 'accent-pink',
+    description: 'Words, stories & writing',
     topics: [
-      {
-        id: 'alphabet', name: 'ABCs', emoji: '🔤',
-        lessons: [
-          { id: 'r1', title: 'Letters A-M', description: 'First half of the alphabet!', duration: '8 min', xp: 15 },
-          { id: 'r2', title: 'Letters N-Z', description: 'Second half!', duration: '8 min', xp: 15 },
-          { id: 'r3', title: 'Upper & Lowercase', description: 'Big and small letters', duration: '8 min', xp: 15 },
-          { id: 'r4', title: 'Letter Sounds', description: 'What sound does each make?', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'phonics', name: 'Phonics', emoji: '🗣️',
-        lessons: [
-          { id: 'p1', title: 'Short Vowels', description: 'A, E, I, O, U sounds!', duration: '10 min', xp: 20 },
-          { id: 'p2', title: 'Long Vowels', description: 'When vowels say their name!', duration: '10 min', xp: 20 },
-          { id: 'p3', title: 'Blends', description: 'Letters that stick together!', duration: '10 min', xp: 20 },
-          { id: 'p4', title: 'Sight Words', description: 'Words to know by heart!', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'vocabulary', name: 'Word Power', emoji: '💬',
-        lessons: [
-          { id: 'v1', title: 'Action Words', description: 'Words that DO things!', duration: '8 min', xp: 15 },
-          { id: 'v2', title: 'Describing Words', description: 'Make things colorful!', duration: '8 min', xp: 15 },
-          { id: 'v3', title: 'Opposites', description: 'Hot and cold, big and small!', duration: '8 min', xp: 15 },
-        ]
-      },
-      {
-        id: 'writing', name: 'Writing', emoji: '✏️',
-        lessons: [
-          { id: 'w1', title: 'Sentences', description: 'Complete thoughts!', duration: '10 min', xp: 20 },
-          { id: 'w2', title: 'Paragraphs', description: 'Group your ideas!', duration: '12 min', xp: 25 },
-          { id: 'w3', title: 'Story Writing', description: 'Beginning, middle, end!', duration: '15 min', xp: 30 },
-        ]
-      },
+      { id: 'alphabet', name: 'ABCs', emoji: '🔤', lessons: [
+        { id: 'r1', title: 'Letters A-M', description: 'First half', duration: '8 min', xp: 15 },
+        { id: 'r2', title: 'Letters N-Z', description: 'Second half', duration: '8 min', xp: 15 },
+        { id: 'r3', title: 'Upper & Lower', description: 'Big and small', duration: '8 min', xp: 15 },
+        { id: 'r4', title: 'Letter Sounds', description: 'Phonics basics', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'phonics', name: 'Phonics', emoji: '🗣️', lessons: [
+        { id: 'p1', title: 'Short Vowels', description: 'A, E, I, O, U', duration: '10 min', xp: 20 },
+        { id: 'p2', title: 'Long Vowels', description: 'Say their name', duration: '10 min', xp: 20 },
+        { id: 'p3', title: 'Blends', description: 'Letters together', duration: '10 min', xp: 20 },
+        { id: 'p4', title: 'Sight Words', description: 'Know by heart', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'vocabulary', name: 'Vocabulary', emoji: '💬', lessons: [
+        { id: 'v1', title: 'Action Words', description: 'Verbs', duration: '8 min', xp: 15 },
+        { id: 'v2', title: 'Describing Words', description: 'Adjectives', duration: '8 min', xp: 15 },
+        { id: 'v3', title: 'Opposites', description: 'Antonyms', duration: '8 min', xp: 15 },
+      ]},
+      { id: 'writing', name: 'Writing', emoji: '✏️', lessons: [
+        { id: 'w1', title: 'Sentences', description: 'Complete thoughts', duration: '10 min', xp: 20 },
+        { id: 'w2', title: 'Paragraphs', description: 'Group ideas', duration: '12 min', xp: 25 },
+        { id: 'w3', title: 'Stories', description: 'Beginning, middle, end', duration: '15 min', xp: 30 },
+      ]},
     ]
   },
   {
-    id: 'science',
-    name: 'Science Lab',
-    emoji: '🔬',
-    gradient: 'from-green-200 via-emerald-200 to-teal-200',
-    bgClass: 'bg-gradient-to-br from-green-100 to-emerald-100',
-    description: 'Discover how the world works!',
+    id: 'science', name: 'Science', emoji: '🔬', accent: 'accent-green',
+    description: 'How the world works',
     topics: [
-      {
-        id: 'life', name: 'Living Things', emoji: '🌱',
-        lessons: [
-          { id: 'ls1', title: 'Plants', description: 'How do plants grow?', duration: '8 min', xp: 15 },
-          { id: 'ls2', title: 'Animals', description: 'Different types of animals!', duration: '8 min', xp: 15 },
-          { id: 'ls3', title: 'Human Body', description: 'How your body works!', duration: '10 min', xp: 20 },
-          { id: 'ls4', title: 'Food Chains', description: 'Who eats what?', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'earth', name: 'Planet Earth', emoji: '🌍',
-        lessons: [
-          { id: 'es1', title: 'Weather', description: 'Sun, rain, snow!', duration: '8 min', xp: 15 },
-          { id: 'es2', title: 'Seasons', description: 'Spring, summer, fall, winter!', duration: '8 min', xp: 15 },
-          { id: 'es3', title: 'Rocks', description: 'What is Earth made of?', duration: '10 min', xp: 20 },
-          { id: 'es4', title: 'Water Cycle', description: 'Where does rain come from?', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'space', name: 'Space', emoji: '🚀',
-        lessons: [
-          { id: 'sp1', title: 'Solar System', description: 'Planets and the Sun!', duration: '10 min', xp: 20 },
-          { id: 'sp2', title: 'Earth & Moon', description: 'Our home and neighbor!', duration: '8 min', xp: 15 },
-          { id: 'sp3', title: 'Stars', description: 'Billions of stars!', duration: '10 min', xp: 20 },
-        ]
-      },
+      { id: 'life', name: 'Living Things', emoji: '🌱', lessons: [
+        { id: 'ls1', title: 'Plants', description: 'How they grow', duration: '8 min', xp: 15 },
+        { id: 'ls2', title: 'Animals', description: 'Different types', duration: '8 min', xp: 15 },
+        { id: 'ls3', title: 'Human Body', description: 'How it works', duration: '10 min', xp: 20 },
+        { id: 'ls4', title: 'Food Chains', description: 'Who eats what', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'earth', name: 'Earth', emoji: '🌍', lessons: [
+        { id: 'es1', title: 'Weather', description: 'Sun, rain, snow', duration: '8 min', xp: 15 },
+        { id: 'es2', title: 'Seasons', description: 'Four seasons', duration: '8 min', xp: 15 },
+        { id: 'es3', title: 'Rocks', description: 'What Earth is made of', duration: '10 min', xp: 20 },
+        { id: 'es4', title: 'Water Cycle', description: 'Where rain comes from', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'space', name: 'Space', emoji: '🚀', lessons: [
+        { id: 'sp1', title: 'Solar System', description: 'Planets and Sun', duration: '10 min', xp: 20 },
+        { id: 'sp2', title: 'Earth & Moon', description: 'Our neighbors', duration: '8 min', xp: 15 },
+        { id: 'sp3', title: 'Stars', description: 'Billions of them', duration: '10 min', xp: 20 },
+      ]},
     ]
   },
   {
-    id: 'history',
-    name: 'Time Travel',
-    emoji: '🏛️',
-    gradient: 'from-amber-200 via-yellow-200 to-orange-200',
-    bgClass: 'bg-gradient-to-br from-amber-100 to-yellow-100',
-    description: 'Explore the past!',
+    id: 'history', name: 'History', emoji: '🏛️', accent: 'accent-amber',
+    description: 'Stories from the past',
     topics: [
-      {
-        id: 'usa', name: 'American Story', emoji: '🇺🇸',
-        lessons: [
-          { id: 'us1', title: 'Native Americans', description: 'The first people here!', duration: '10 min', xp: 20 },
-          { id: 'us2', title: 'Explorers', description: 'New people arrive!', duration: '10 min', xp: 20 },
-          { id: 'us3', title: 'America is Born', description: 'The Revolution!', duration: '12 min', xp: 25 },
-          { id: 'us4', title: 'Modern Times', description: 'Recent history!', duration: '10 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'world', name: 'World History', emoji: '🌏',
-        lessons: [
-          { id: 'wh1', title: 'Ancient Egypt', description: 'Pyramids and pharaohs!', duration: '10 min', xp: 20 },
-          { id: 'wh2', title: 'Ancient Greece', description: 'Olympics and democracy!', duration: '10 min', xp: 20 },
-          { id: 'wh3', title: 'Ancient Rome', description: 'Gladiators and roads!', duration: '10 min', xp: 20 },
-          { id: 'wh4', title: 'Knights & Castles', description: 'Medieval times!', duration: '10 min', xp: 20 },
-        ]
-      },
-    ]
-  },
-  // FUTURE SKILLS
-  {
-    id: 'engineering',
-    name: 'Build It!',
-    emoji: '⚙️',
-    gradient: 'from-cyan-200 via-sky-200 to-blue-200',
-    bgClass: 'bg-gradient-to-br from-cyan-100 to-sky-100',
-    description: 'Create, design & solve problems!',
-    topics: [
-      {
-        id: 'machines', name: 'Simple Machines', emoji: '🔧',
-        lessons: [
-          { id: 'sm1', title: 'Levers', description: 'Lift heavy things easily!', duration: '8 min', xp: 20 },
-          { id: 'sm2', title: 'Wheels', description: 'Make things roll!', duration: '8 min', xp: 20 },
-          { id: 'sm3', title: 'Pulleys', description: 'Pull things up!', duration: '8 min', xp: 20 },
-          { id: 'sm4', title: 'Ramps', description: 'Inclined planes!', duration: '8 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'design', name: 'Design Thinking', emoji: '💡',
-        lessons: [
-          { id: 'dt1', title: 'Find Problems', description: 'What needs fixing?', duration: '10 min', xp: 25 },
-          { id: 'dt2', title: 'Brainstorm', description: 'Think of solutions!', duration: '10 min', xp: 25 },
-          { id: 'dt3', title: 'Build & Test', description: 'Try it out!', duration: '12 min', xp: 30 },
-          { id: 'dt4', title: 'Make It Better', description: 'Improve your design!', duration: '12 min', xp: 30 },
-        ]
-      },
-      {
-        id: 'coding', name: 'Coding Basics', emoji: '💻',
-        lessons: [
-          { id: 'cd1', title: 'What is Code?', description: 'Talk to computers!', duration: '8 min', xp: 20 },
-          { id: 'cd2', title: 'Step by Step', description: 'Sequences!', duration: '10 min', xp: 25 },
-          { id: 'cd3', title: 'Loops', description: 'Repeat things!', duration: '10 min', xp: 25 },
-          { id: 'cd4', title: 'If-Then', description: 'Make decisions!', duration: '12 min', xp: 30 },
-        ]
-      },
-      {
-        id: 'robots', name: 'Robotics', emoji: '🤖',
-        lessons: [
-          { id: 'rb1', title: 'What is a Robot?', description: 'Machines that help us!', duration: '8 min', xp: 20 },
-          { id: 'rb2', title: 'Sensors', description: 'How robots see and feel!', duration: '10 min', xp: 25 },
-          { id: 'rb3', title: 'Movement', description: 'How robots move!', duration: '10 min', xp: 25 },
-        ]
-      },
+      { id: 'usa', name: 'America', emoji: '🇺🇸', lessons: [
+        { id: 'us1', title: 'Native Americans', description: 'First people', duration: '10 min', xp: 20 },
+        { id: 'us2', title: 'Explorers', description: 'New arrivals', duration: '10 min', xp: 20 },
+        { id: 'us3', title: 'Revolution', description: 'America is born', duration: '12 min', xp: 25 },
+        { id: 'us4', title: 'Modern Times', description: 'Recent history', duration: '10 min', xp: 20 },
+      ]},
+      { id: 'world', name: 'World', emoji: '🌏', lessons: [
+        { id: 'wh1', title: 'Ancient Egypt', description: 'Pyramids', duration: '10 min', xp: 20 },
+        { id: 'wh2', title: 'Ancient Greece', description: 'Olympics', duration: '10 min', xp: 20 },
+        { id: 'wh3', title: 'Ancient Rome', description: 'Gladiators', duration: '10 min', xp: 20 },
+        { id: 'wh4', title: 'Medieval', description: 'Knights & castles', duration: '10 min', xp: 20 },
+      ]},
     ]
   },
   {
-    id: 'money',
-    name: 'Money Smart',
-    emoji: '💰',
-    gradient: 'from-emerald-200 via-green-200 to-lime-200',
-    bgClass: 'bg-gradient-to-br from-emerald-100 to-green-100',
-    description: 'Learn how money really works!',
+    id: 'engineering', name: 'Engineering', emoji: '⚙️', accent: 'accent-teal',
+    description: 'Build, create & solve',
     topics: [
-      {
-        id: 'basics', name: 'Money Basics', emoji: '🪙',
-        lessons: [
-          { id: 'mb1', title: 'Coins & Bills', description: 'Know your money!', duration: '8 min', xp: 15 },
-          { id: 'mb2', title: 'Counting Money', description: 'Add it up!', duration: '8 min', xp: 15 },
-          { id: 'mb3', title: 'Making Change', description: 'What\'s left over?', duration: '10 min', xp: 20 },
-          { id: 'mb4', title: 'Needs vs Wants', description: 'What do you really need?', duration: '8 min', xp: 15 },
-        ]
-      },
-      {
-        id: 'saving', name: 'Saving Money', emoji: '🐷',
-        lessons: [
-          { id: 'sv1', title: 'Why Save?', description: 'Future you will thank you!', duration: '8 min', xp: 20 },
-          { id: 'sv2', title: 'Setting Goals', description: 'What are you saving for?', duration: '8 min', xp: 20 },
-          { id: 'sv3', title: 'Piggy Bank Power', description: 'Start small, grow big!', duration: '8 min', xp: 20 },
-          { id: 'sv4', title: 'Bank Accounts', description: 'Where grown-ups keep money!', duration: '10 min', xp: 25 },
-        ]
-      },
-      {
-        id: 'earning', name: 'Earning Money', emoji: '💵',
-        lessons: [
-          { id: 'er1', title: 'Jobs & Work', description: 'How people earn money!', duration: '8 min', xp: 20 },
-          { id: 'er2', title: 'Allowance Ideas', description: 'Earn money at home!', duration: '8 min', xp: 20 },
-          { id: 'er3', title: 'Kid Businesses', description: 'Make your own money!', duration: '10 min', xp: 25 },
-        ]
-      },
-      {
-        id: 'budget', name: 'Budgeting', emoji: '📊',
-        lessons: [
-          { id: 'bg1', title: 'What is a Budget?', description: 'Plan your money!', duration: '8 min', xp: 20 },
-          { id: 'bg2', title: 'Save, Spend, Give', description: 'The 3 jars!', duration: '10 min', xp: 25 },
-          { id: 'bg3', title: 'Track Spending', description: 'Where does money go?', duration: '10 min', xp: 25 },
-        ]
-      },
+      { id: 'machines', name: 'Machines', emoji: '🔧', lessons: [
+        { id: 'sm1', title: 'Levers', description: 'Lift heavy things', duration: '8 min', xp: 20 },
+        { id: 'sm2', title: 'Wheels', description: 'Make things roll', duration: '8 min', xp: 20 },
+        { id: 'sm3', title: 'Pulleys', description: 'Pull things up', duration: '8 min', xp: 20 },
+        { id: 'sm4', title: 'Ramps', description: 'Inclined planes', duration: '8 min', xp: 20 },
+      ]},
+      { id: 'design', name: 'Design', emoji: '💡', lessons: [
+        { id: 'dt1', title: 'Find Problems', description: 'What needs fixing', duration: '10 min', xp: 25 },
+        { id: 'dt2', title: 'Brainstorm', description: 'Think of solutions', duration: '10 min', xp: 25 },
+        { id: 'dt3', title: 'Build & Test', description: 'Try it out', duration: '12 min', xp: 30 },
+        { id: 'dt4', title: 'Improve', description: 'Make it better', duration: '12 min', xp: 30 },
+      ]},
+      { id: 'coding', name: 'Coding', emoji: '💻', lessons: [
+        { id: 'cd1', title: 'What is Code', description: 'Talk to computers', duration: '8 min', xp: 20 },
+        { id: 'cd2', title: 'Sequences', description: 'Step by step', duration: '10 min', xp: 25 },
+        { id: 'cd3', title: 'Loops', description: 'Repeat things', duration: '10 min', xp: 25 },
+        { id: 'cd4', title: 'If-Then', description: 'Make decisions', duration: '12 min', xp: 30 },
+      ]},
+      { id: 'robots', name: 'Robotics', emoji: '🤖', lessons: [
+        { id: 'rb1', title: 'What is a Robot', description: 'Helpful machines', duration: '8 min', xp: 20 },
+        { id: 'rb2', title: 'Sensors', description: 'How robots sense', duration: '10 min', xp: 25 },
+        { id: 'rb3', title: 'Movement', description: 'How robots move', duration: '10 min', xp: 25 },
+      ]},
     ]
   },
   {
-    id: 'investing',
-    name: 'Grow Money',
-    emoji: '📈',
-    gradient: 'from-violet-200 via-purple-200 to-fuchsia-200',
-    bgClass: 'bg-gradient-to-br from-violet-100 to-purple-100',
-    description: 'Make your money grow!',
+    id: 'money', name: 'Money', emoji: '💰', accent: 'accent-green',
+    description: 'How money works',
     topics: [
-      {
-        id: 'intro', name: 'Investing 101', emoji: '🌱',
-        lessons: [
-          { id: 'ib1', title: 'What is Investing?', description: 'Make money grow!', duration: '8 min', xp: 25 },
-          { id: 'ib2', title: 'Compound Interest', description: 'The magic of growth!', duration: '10 min', xp: 30 },
-          { id: 'ib3', title: 'Start Early!', description: 'Time is your superpower!', duration: '8 min', xp: 25 },
-          { id: 'ib4', title: 'Risk & Reward', description: 'More risk = more reward!', duration: '10 min', xp: 30 },
-        ]
-      },
-      {
-        id: 'stocks', name: 'Stock Market', emoji: '📊',
-        lessons: [
-          { id: 'st1', title: 'What is a Stock?', description: 'Own a piece of a company!', duration: '10 min', xp: 30 },
-          { id: 'st2', title: 'How Stocks Work', description: 'Buy low, sell high!', duration: '10 min', xp: 30 },
-          { id: 'st3', title: 'Pick Good Companies', description: 'What makes a company great?', duration: '12 min', xp: 35 },
-          { id: 'st4', title: 'Dividends', description: 'Get paid to own stocks!', duration: '10 min', xp: 30 },
-        ]
-      },
-      {
-        id: 'other', name: 'Other Investments', emoji: '🏠',
-        lessons: [
-          { id: 'oi1', title: 'Real Estate', description: 'Owning buildings!', duration: '10 min', xp: 30 },
-          { id: 'oi2', title: 'Index Funds', description: 'Own the whole market!', duration: '10 min', xp: 30 },
-          { id: 'oi3', title: 'Starting a Business', description: 'The best investment!', duration: '12 min', xp: 35 },
-        ]
-      },
+      { id: 'basics', name: 'Basics', emoji: '🪙', lessons: [
+        { id: 'mb1', title: 'Coins & Bills', description: 'Know your money', duration: '8 min', xp: 15 },
+        { id: 'mb2', title: 'Counting Money', description: 'Add it up', duration: '8 min', xp: 15 },
+        { id: 'mb3', title: 'Making Change', description: 'What\'s left over', duration: '10 min', xp: 20 },
+        { id: 'mb4', title: 'Needs vs Wants', description: 'What you need', duration: '8 min', xp: 15 },
+      ]},
+      { id: 'saving', name: 'Saving', emoji: '🐷', lessons: [
+        { id: 'sv1', title: 'Why Save', description: 'For the future', duration: '8 min', xp: 20 },
+        { id: 'sv2', title: 'Goals', description: 'What to save for', duration: '8 min', xp: 20 },
+        { id: 'sv3', title: 'Piggy Bank', description: 'Start small', duration: '8 min', xp: 20 },
+        { id: 'sv4', title: 'Bank Accounts', description: 'Where adults save', duration: '10 min', xp: 25 },
+      ]},
+      { id: 'earning', name: 'Earning', emoji: '💵', lessons: [
+        { id: 'er1', title: 'Jobs', description: 'How to earn', duration: '8 min', xp: 20 },
+        { id: 'er2', title: 'Allowance', description: 'Earn at home', duration: '8 min', xp: 20 },
+        { id: 'er3', title: 'Kid Business', description: 'Make your own', duration: '10 min', xp: 25 },
+      ]},
+      { id: 'budget', name: 'Budgeting', emoji: '📊', lessons: [
+        { id: 'bg1', title: 'What is a Budget', description: 'Plan your money', duration: '8 min', xp: 20 },
+        { id: 'bg2', title: 'Three Jars', description: 'Save, Spend, Give', duration: '10 min', xp: 25 },
+        { id: 'bg3', title: 'Tracking', description: 'Where money goes', duration: '10 min', xp: 25 },
+      ]},
     ]
   },
   {
-    id: 'business',
-    name: 'Boss Kid',
-    emoji: '🏪',
-    gradient: 'from-rose-200 via-pink-200 to-red-200',
-    bgClass: 'bg-gradient-to-br from-rose-100 to-pink-100',
-    description: 'Start your own empire!',
+    id: 'investing', name: 'Investing', emoji: '📈', accent: 'accent-purple',
+    description: 'Make money grow',
     topics: [
-      {
-        id: 'entrepreneur', name: 'Be an Entrepreneur', emoji: '🚀',
-        lessons: [
-          { id: 'en1', title: 'What is an Entrepreneur?', description: 'People who start things!', duration: '8 min', xp: 25 },
-          { id: 'en2', title: 'Famous Kid Bosses', description: 'Kids who made it big!', duration: '10 min', xp: 30 },
-          { id: 'en3', title: 'Find Problems', description: 'Every business solves a problem!', duration: '10 min', xp: 30 },
-          { id: 'en4', title: 'Your Big Idea', description: 'What will YOU create?', duration: '12 min', xp: 35 },
-        ]
-      },
-      {
-        id: 'start', name: 'Start a Business', emoji: '🎬',
-        lessons: [
-          { id: 'sb1', title: 'Lemonade Stand', description: 'Your first business!', duration: '10 min', xp: 30 },
-          { id: 'sb2', title: 'Products vs Services', description: 'Sell things or do things!', duration: '10 min', xp: 30 },
-          { id: 'sb3', title: 'Know Your Customer', description: 'Who will buy from you?', duration: '10 min', xp: 30 },
-          { id: 'sb4', title: 'Setting Prices', description: 'How much should you charge?', duration: '12 min', xp: 35 },
-        ]
-      },
-      {
-        id: 'ideas', name: 'Kid Business Ideas', emoji: '💡',
-        lessons: [
-          { id: 'bi1', title: 'Pet Sitting', description: 'Help with animals!', duration: '8 min', xp: 25 },
-          { id: 'bi2', title: 'Yard Work', description: 'Help neighbors!', duration: '8 min', xp: 25 },
-          { id: 'bi3', title: 'Arts & Crafts', description: 'Sell what you make!', duration: '8 min', xp: 25 },
-          { id: 'bi4', title: 'Online Business', description: 'Sell on the internet!', duration: '10 min', xp: 30 },
-        ]
-      },
+      { id: 'intro', name: 'Basics', emoji: '🌱', lessons: [
+        { id: 'ib1', title: 'What is Investing', description: 'Grow your money', duration: '8 min', xp: 25 },
+        { id: 'ib2', title: 'Compound Interest', description: 'Magic of growth', duration: '10 min', xp: 30 },
+        { id: 'ib3', title: 'Start Early', description: 'Time is power', duration: '8 min', xp: 25 },
+        { id: 'ib4', title: 'Risk & Reward', description: 'Balance', duration: '10 min', xp: 30 },
+      ]},
+      { id: 'stocks', name: 'Stocks', emoji: '📊', lessons: [
+        { id: 'st1', title: 'What is a Stock', description: 'Own a company', duration: '10 min', xp: 30 },
+        { id: 'st2', title: 'How Stocks Work', description: 'Buy low, sell high', duration: '10 min', xp: 30 },
+        { id: 'st3', title: 'Good Companies', description: 'What makes them great', duration: '12 min', xp: 35 },
+        { id: 'st4', title: 'Dividends', description: 'Get paid to own', duration: '10 min', xp: 30 },
+      ]},
+      { id: 'other', name: 'Other', emoji: '🏠', lessons: [
+        { id: 'oi1', title: 'Real Estate', description: 'Own buildings', duration: '10 min', xp: 30 },
+        { id: 'oi2', title: 'Index Funds', description: 'Own the market', duration: '10 min', xp: 30 },
+        { id: 'oi3', title: 'Business', description: 'Best investment', duration: '12 min', xp: 35 },
+      ]},
     ]
   },
   {
-    id: 'lifeskills',
-    name: 'Life Winner',
-    emoji: '🏆',
-    gradient: 'from-yellow-200 via-amber-200 to-orange-200',
-    bgClass: 'bg-gradient-to-br from-yellow-100 to-amber-100',
-    description: 'Skills for a great life!',
+    id: 'business', name: 'Business', emoji: '🏪', accent: 'accent-pink',
+    description: 'Start your empire',
     topics: [
-      {
-        id: 'goals', name: 'Setting Goals', emoji: '🎯',
-        lessons: [
-          { id: 'gl1', title: 'Dream Big', description: 'What do you want?', duration: '8 min', xp: 20 },
-          { id: 'gl2', title: 'SMART Goals', description: 'Goals that work!', duration: '10 min', xp: 25 },
-          { id: 'gl3', title: 'Break It Down', description: 'Small steps, big dreams!', duration: '10 min', xp: 25 },
-          { id: 'gl4', title: 'Stay Motivated', description: 'Keep going!', duration: '10 min', xp: 25 },
-        ]
-      },
-      {
-        id: 'problems', name: 'Problem Solving', emoji: '🧩',
-        lessons: [
-          { id: 'ps1', title: 'Identify Problems', description: 'What\'s really wrong?', duration: '8 min', xp: 20 },
-          { id: 'ps2', title: 'Find Solutions', description: 'Many ways to fix it!', duration: '10 min', xp: 25 },
-          { id: 'ps3', title: 'Pick the Best', description: 'Choose wisely!', duration: '10 min', xp: 25 },
-          { id: 'ps4', title: 'Learn from Mistakes', description: 'Fail forward!', duration: '10 min', xp: 25 },
-        ]
-      },
-      {
-        id: 'communicate', name: 'Communication', emoji: '🗣️',
-        lessons: [
-          { id: 'cm1', title: 'Listening', description: 'Really hear people!', duration: '8 min', xp: 20 },
-          { id: 'cm2', title: 'Speaking Up', description: 'Say what you mean!', duration: '8 min', xp: 20 },
-          { id: 'cm3', title: 'Being Kind', description: 'Kind words matter!', duration: '8 min', xp: 20 },
-        ]
-      },
-      {
-        id: 'time', name: 'Time Management', emoji: '⏰',
-        lessons: [
-          { id: 'tm1', title: 'Plan Your Day', description: 'Be organized!', duration: '10 min', xp: 25 },
-          { id: 'tm2', title: 'First Things First', description: 'Important stuff first!', duration: '10 min', xp: 25 },
-          { id: 'tm3', title: 'Stay Focused', description: 'Avoid distractions!', duration: '10 min', xp: 25 },
-        ]
-      },
+      { id: 'entrepreneur', name: 'Entrepreneur', emoji: '🚀', lessons: [
+        { id: 'en1', title: 'What is One', description: 'People who start things', duration: '8 min', xp: 25 },
+        { id: 'en2', title: 'Kid Bosses', description: 'Kids who made it', duration: '10 min', xp: 30 },
+        { id: 'en3', title: 'Find Problems', description: 'Business solves problems', duration: '10 min', xp: 30 },
+        { id: 'en4', title: 'Your Idea', description: 'What will you create', duration: '12 min', xp: 35 },
+      ]},
+      { id: 'start', name: 'Starting', emoji: '🎬', lessons: [
+        { id: 'sb1', title: 'Lemonade Stand', description: 'First business', duration: '10 min', xp: 30 },
+        { id: 'sb2', title: 'Products vs Services', description: 'Sell or do', duration: '10 min', xp: 30 },
+        { id: 'sb3', title: 'Customers', description: 'Who will buy', duration: '10 min', xp: 30 },
+        { id: 'sb4', title: 'Pricing', description: 'How much to charge', duration: '12 min', xp: 35 },
+      ]},
+      { id: 'ideas', name: 'Ideas', emoji: '💡', lessons: [
+        { id: 'bi1', title: 'Pet Sitting', description: 'Help with animals', duration: '8 min', xp: 25 },
+        { id: 'bi2', title: 'Yard Work', description: 'Help neighbors', duration: '8 min', xp: 25 },
+        { id: 'bi3', title: 'Crafts', description: 'Sell what you make', duration: '8 min', xp: 25 },
+        { id: 'bi4', title: 'Online', description: 'Sell on internet', duration: '10 min', xp: 30 },
+      ]},
+    ]
+  },
+  {
+    id: 'lifeskills', name: 'Life Skills', emoji: '🏆', accent: 'accent-amber',
+    description: 'Skills for success',
+    topics: [
+      { id: 'goals', name: 'Goals', emoji: '🎯', lessons: [
+        { id: 'gl1', title: 'Dream Big', description: 'What do you want', duration: '8 min', xp: 20 },
+        { id: 'gl2', title: 'SMART Goals', description: 'Goals that work', duration: '10 min', xp: 25 },
+        { id: 'gl3', title: 'Break It Down', description: 'Small steps', duration: '10 min', xp: 25 },
+        { id: 'gl4', title: 'Stay Motivated', description: 'Keep going', duration: '10 min', xp: 25 },
+      ]},
+      { id: 'problems', name: 'Problem Solving', emoji: '🧩', lessons: [
+        { id: 'ps1', title: 'Identify', description: 'What\'s wrong', duration: '8 min', xp: 20 },
+        { id: 'ps2', title: 'Solutions', description: 'Many ways to fix', duration: '10 min', xp: 25 },
+        { id: 'ps3', title: 'Pick Best', description: 'Choose wisely', duration: '10 min', xp: 25 },
+        { id: 'ps4', title: 'Learn', description: 'From mistakes', duration: '10 min', xp: 25 },
+      ]},
+      { id: 'communicate', name: 'Communication', emoji: '🗣️', lessons: [
+        { id: 'cm1', title: 'Listening', description: 'Really hear', duration: '8 min', xp: 20 },
+        { id: 'cm2', title: 'Speaking', description: 'Say what you mean', duration: '8 min', xp: 20 },
+        { id: 'cm3', title: 'Kindness', description: 'Kind words matter', duration: '8 min', xp: 20 },
+      ]},
+      { id: 'time', name: 'Time', emoji: '⏰', lessons: [
+        { id: 'tm1', title: 'Plan Your Day', description: 'Be organized', duration: '10 min', xp: 25 },
+        { id: 'tm2', title: 'Prioritize', description: 'Important first', duration: '10 min', xp: 25 },
+        { id: 'tm3', title: 'Focus', description: 'Avoid distractions', duration: '10 min', xp: 25 },
+      ]},
     ]
   },
 ];
-
-// ============================================================================
-// APP COMPONENT
-// ============================================================================
 
 export default function FutureKidsAcademy() {
   const [selectedWorld, setSelectedWorld] = useState<World | null>(null);
@@ -444,7 +296,6 @@ export default function FutureKidsAcademy() {
     localStorage.setItem('futurekids-progress', JSON.stringify({ xp, level, completedLessons, streak }));
   }, [xp, level, completedLessons, streak]);
 
-  const xpForLevel = (lvl: number) => lvl * 100;
   const progress = Math.min((xp % 100) / 100 * 100, 100);
 
   const completeLesson = (lesson: Lesson) => {
@@ -452,7 +303,7 @@ export default function FutureKidsAcademy() {
     const newXp = xp + lesson.xp;
     setXp(newXp);
     setCompletedLessons([...completedLessons, lesson.id]);
-    if (newXp >= xpForLevel(level) * level) {
+    if (newXp >= level * 100) {
       setLevel(level + 1);
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 3000);
@@ -462,14 +313,12 @@ export default function FutureKidsAcademy() {
   // Celebration
   if (showCelebration) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 flex items-center justify-center p-4">
-        <div className="text-center">
-          <div className="text-8xl mb-6 animate-bounce">🎉</div>
-          <h1 className="font-display text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 mb-4">
-            LEVEL UP!
-          </h1>
-          <p className="text-2xl text-gray-600 font-bold">You are now Level {level}!</p>
-          <p className="text-lg text-gray-400 mt-4">Amazing work, superstar! ⭐</p>
+      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-6">
+        <div className="text-center animate-fade-in">
+          <div className="text-7xl mb-6">🎉</div>
+          <h1 className="font-serif text-4xl text-[#3D3935] mb-4">Level Up!</h1>
+          <p className="text-xl text-[#9A9086]">You&apos;re now Level {level}</p>
+          <p className="text-[#9A9086] mt-4">Keep going, superstar!</p>
         </div>
       </div>
     );
@@ -479,49 +328,38 @@ export default function FutureKidsAcademy() {
   if (selectedLesson && selectedTopic && selectedWorld) {
     const isComplete = completedLessons.includes(selectedLesson.id);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FFF9F5] via-[#FFF0E8] to-[#F5F0FF]">
-        <header className="p-4">
-          <button 
-            onClick={() => setSelectedLesson(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
-          >
-            <span className="text-2xl">←</span> Back
+      <div className="min-h-screen bg-[#FAF7F2] texture">
+        <header className="px-6 py-5 border-b border-[#E8DDD4]">
+          <button onClick={() => setSelectedLesson(null)} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
+            <span>←</span> Back
           </button>
         </header>
-        
-        <main className="max-w-md mx-auto px-5 py-4">
-          <div className={`bubble ${selectedWorld.bgClass} p-8 text-center mb-6`}>
-            <span className="text-7xl block mb-4 animate-float">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl font-black text-gray-800 mb-2">{selectedLesson.title}</h1>
-            <p className="text-gray-600 font-semibold">{selectedLesson.description}</p>
+        <main className="max-w-lg mx-auto px-6 py-8">
+          <div className={`${selectedWorld.accent} rounded-2xl p-8 text-center mb-6`}>
+            <span className="text-5xl block mb-4">{selectedTopic.emoji}</span>
+            <h1 className="font-serif text-2xl text-[#3D3935] mb-2">{selectedLesson.title}</h1>
+            <p className="text-[#9A9086]">{selectedLesson.description}</p>
           </div>
-
-          <div className="bubble bg-white p-6 mb-6">
-            <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl flex items-center justify-center mb-4">
+          <div className="card p-6 mb-6">
+            <div className="aspect-video bg-[#E8DDD4] rounded-xl flex items-center justify-center mb-4">
               <div className="text-center">
-                <span className="text-6xl block mb-2">🎬</span>
-                <p className="text-gray-400 font-semibold">Video lesson coming soon!</p>
+                <span className="text-4xl block mb-2">🎬</span>
+                <p className="text-[#9A9086] text-sm">Video coming soon</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm text-gray-500 font-bold">
-              <span>⏱️ {selectedLesson.duration}</span>
-              <span>⭐ +{selectedLesson.xp} XP</span>
+            <div className="flex justify-between text-sm text-[#9A9086]">
+              <span>⏱ {selectedLesson.duration}</span>
+              <span>+{selectedLesson.xp} XP</span>
             </div>
           </div>
-
           {isComplete ? (
-            <div className="bubble bg-gradient-to-r from-green-100 to-emerald-100 p-6 text-center">
-              <span className="text-5xl block mb-2">✅</span>
-              <p className="font-display font-black text-green-700 text-xl">All Done!</p>
-              <p className="text-green-600 font-bold">You earned {selectedLesson.xp} XP!</p>
+            <div className="card p-6 text-center bg-[#E8F5E9]">
+              <span className="text-3xl block mb-2">✓</span>
+              <p className="font-medium text-[#2E7D32]">Completed</p>
             </div>
           ) : (
-            <button
-              onClick={() => completeLesson(selectedLesson)}
-              className={`w-full bubble bg-gradient-to-r ${selectedWorld.gradient} p-6 text-center`}
-            >
-              <span className="font-display font-black text-gray-800 text-xl">Complete Lesson ✨</span>
-              <p className="text-gray-600 font-bold mt-1">Earn {selectedLesson.xp} XP!</p>
+            <button onClick={() => completeLesson(selectedLesson)} className="btn-primary w-full text-center">
+              Complete Lesson
             </button>
           )}
         </main>
@@ -533,65 +371,45 @@ export default function FutureKidsAcademy() {
   if (selectedTopic && selectedWorld) {
     const done = selectedTopic.lessons.filter(l => completedLessons.includes(l.id)).length;
     const total = selectedTopic.lessons.length;
-
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FFF9F5] via-[#FFF0E8] to-[#F5F0FF]">
-        <header className="p-4">
-          <button 
-            onClick={() => setSelectedTopic(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
-          >
-            <span className="text-2xl">←</span> Back
+      <div className="min-h-screen bg-[#FAF7F2] texture">
+        <header className="px-6 py-5 border-b border-[#E8DDD4]">
+          <button onClick={() => setSelectedTopic(null)} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
+            <span>←</span> Back
           </button>
         </header>
-        
-        <main className="max-w-md mx-auto px-5 py-4">
-          <div className={`bubble ${selectedWorld.bgClass} p-6 text-center mb-6`}>
-            <span className="text-6xl block mb-3">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl font-black text-gray-800">{selectedTopic.name}</h1>
-            <p className="text-gray-600 font-bold mt-2">{done} of {total} lessons done</p>
-            <div className="w-full bg-white/50 rounded-full h-4 mt-4">
-              <div 
-                className="h-4 rounded-full bg-white/80 progress-fill"
-                style={{ width: `${(done / total) * 100}%` }}
-              />
+        <main className="max-w-lg mx-auto px-6 py-8">
+          <div className={`${selectedWorld.accent} rounded-2xl p-6 text-center mb-6`}>
+            <span className="text-4xl block mb-3">{selectedTopic.emoji}</span>
+            <h1 className="font-serif text-2xl text-[#3D3935]">{selectedTopic.name}</h1>
+            <p className="text-[#9A9086] text-sm mt-2">{done} of {total} complete</p>
+            <div className="progress-track h-2 mt-4">
+              <div className="progress-fill h-2" style={{ width: `${(done/total)*100}%` }} />
             </div>
           </div>
-
           <div className="space-y-3">
             {selectedTopic.lessons.map((lesson, idx) => {
               const isDone = completedLessons.includes(lesson.id);
-              const isLocked = idx > 0 && !completedLessons.includes(selectedTopic.lessons[idx - 1].id);
-              
+              const isLocked = idx > 0 && !completedLessons.includes(selectedTopic.lessons[idx-1].id);
               return (
                 <button
                   key={lesson.id}
                   onClick={() => !isLocked && setSelectedLesson(lesson)}
                   disabled={isLocked}
-                  className={`w-full bubble p-5 flex items-center gap-4 text-center ${
-                    isLocked ? 'bg-gray-100 opacity-60' : 
-                    isDone ? 'bg-gradient-to-r from-green-100 to-emerald-100' : 
-                    'bg-white'
-                  }`}
+                  className={`card w-full p-4 flex items-center gap-4 text-left ${isLocked ? 'opacity-50' : ''} ${isDone ? 'bg-[#E8F5E9] border-[#C8E6C9]' : ''}`}
                 >
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-black ${
-                    isLocked ? 'bg-gray-200 text-gray-400' :
-                    isDone ? 'bg-green-400 text-white' :
-                    `bg-gradient-to-br ${selectedWorld.gradient} text-gray-700`
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
+                    isDone ? 'bg-[#4CAF50] text-white' : isLocked ? 'bg-[#E8DDD4] text-[#9A9086]' : 'bg-[#E8DDD4] text-[#3D3935]'
                   }`}>
                     {isLocked ? '🔒' : isDone ? '✓' : idx + 1}
                   </div>
-                  <div className="flex-1 text-left">
-                    <p className={`font-bold text-lg ${isDone ? 'text-green-700' : 'text-gray-800'}`}>
-                      {lesson.title}
-                    </p>
-                    <p className="text-gray-500 font-semibold text-sm">{lesson.description}</p>
+                  <div className="flex-1">
+                    <p className={`font-medium ${isDone ? 'text-[#2E7D32]' : 'text-[#3D3935]'}`}>{lesson.title}</p>
+                    <p className="text-[#9A9086] text-sm">{lesson.description}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-gray-400 font-bold">{lesson.duration}</p>
-                    <p className={`font-black ${isDone ? 'text-green-500' : 'text-amber-500'}`}>
-                      {isDone ? '✓ Done' : `+${lesson.xp}`}
-                    </p>
+                  <div className="text-right text-sm">
+                    <p className="text-[#9A9086]">{lesson.duration}</p>
+                    <p className={isDone ? 'text-[#4CAF50]' : 'text-[#D4A574]'}>+{lesson.xp}</p>
                   </div>
                 </button>
               );
@@ -605,44 +423,33 @@ export default function FutureKidsAcademy() {
   // World View
   if (selectedWorld) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FFF9F5] via-[#FFF0E8] to-[#F5F0FF]">
-        <header className="p-4">
-          <button 
-            onClick={() => setSelectedWorld(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
-          >
-            <span className="text-2xl">←</span> All Worlds
+      <div className="min-h-screen bg-[#FAF7F2] texture">
+        <header className="px-6 py-5 border-b border-[#E8DDD4]">
+          <button onClick={() => setSelectedWorld(null)} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
+            <span>←</span> All Subjects
           </button>
         </header>
-        
-        <main className="max-w-md mx-auto px-5 py-4">
-          <div className={`world-bubble bg-gradient-to-br ${selectedWorld.gradient} p-10 text-center mb-8`}>
-            <span className="text-7xl block mb-4 animate-float">{selectedWorld.emoji}</span>
-            <h1 className="font-display text-3xl font-black text-gray-800">{selectedWorld.name}</h1>
-            <p className="text-gray-600 font-bold mt-2">{selectedWorld.description}</p>
+        <main className="max-w-lg mx-auto px-6 py-8">
+          <div className={`${selectedWorld.accent} rounded-2xl p-8 text-center mb-8`}>
+            <span className="text-5xl block mb-4">{selectedWorld.emoji}</span>
+            <h1 className="font-serif text-3xl text-[#3D3935]">{selectedWorld.name}</h1>
+            <p className="text-[#9A9086] mt-2">{selectedWorld.description}</p>
           </div>
-
           <div className="space-y-3">
             {selectedWorld.topics.map(topic => {
               const done = topic.lessons.filter(l => completedLessons.includes(l.id)).length;
               const total = topic.lessons.length;
-              const pct = Math.round((done / total) * 100);
-              
               return (
-                <button
-                  key={topic.id}
-                  onClick={() => setSelectedTopic(topic)}
-                  className="w-full bubble bg-white p-5 flex items-center gap-4 text-center"
-                >
-                  <span className="text-4xl">{topic.emoji}</span>
-                  <div className="flex-1 text-left">
-                    <p className="font-bold text-lg text-gray-800">{topic.name}</p>
-                    <p className="text-gray-500 font-semibold">{done}/{total} lessons</p>
+                <button key={topic.id} onClick={() => setSelectedTopic(topic)} className="card w-full p-5 flex items-center gap-4 text-left">
+                  <span className="text-3xl">{topic.emoji}</span>
+                  <div className="flex-1">
+                    <p className="font-medium text-[#3D3935]">{topic.name}</p>
+                    <p className="text-[#9A9086] text-sm">{done}/{total} lessons</p>
                   </div>
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black ${
-                    pct === 100 ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-500'
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium ${
+                    done === total ? 'bg-[#E8F5E9] text-[#4CAF50]' : 'bg-[#E8DDD4] text-[#9A9086]'
                   }`}>
-                    {pct === 100 ? '✓' : `${pct}%`}
+                    {done === total ? '✓' : `${Math.round((done/total)*100)}%`}
                   </div>
                 </button>
               );
@@ -654,109 +461,81 @@ export default function FutureKidsAcademy() {
   }
 
   // Home View
-  const schoolWorlds = worldsData.filter(w => ['math', 'reading', 'science', 'history'].includes(w.id));
-  const futureWorlds = worldsData.filter(w => !['math', 'reading', 'science', 'history'].includes(w.id));
+  const school = worldsData.filter(w => ['math','reading','science','history'].includes(w.id));
+  const future = worldsData.filter(w => !['math','reading','science','history'].includes(w.id));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFF9F5] via-[#FFF0E8] to-[#F5F0FF]">
-      {/* Cool Header with Logo */}
-      <header className="px-5 pt-8 pb-6">
-        <div className="max-w-md mx-auto">
-          {/* Logo & Title */}
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-400 via-pink-400 to-orange-400 shadow-xl mb-4">
-              <span className="text-4xl">🚀</span>
+    <div className="min-h-screen bg-[#FAF7F2] texture">
+      {/* Header */}
+      <header className="px-6 pt-12 pb-8 border-b border-[#E8DDD4]">
+        <div className="max-w-lg mx-auto">
+          <p className="text-xs tracking-[0.3em] uppercase text-[#9A9086] mb-2">Learning Academy</p>
+          <h1 className="font-serif text-4xl text-[#3D3935]">FutureKids</h1>
+          
+          {/* Stats */}
+          <div className="flex gap-3 mt-6">
+            <div className="streak-badge px-4 py-2 rounded-full">
+              <span className="text-sm font-medium text-[#B8856C]">🔥 {streak} days</span>
             </div>
-            <h1 className="font-display text-4xl font-black bg-gradient-to-r from-violet-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
-              FutureKids
-            </h1>
-            <p className="text-gray-500 font-bold mt-1">Learn. Grow. Succeed! ✨</p>
-          </div>
-
-          {/* Stats Row */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="bubble bg-gradient-to-r from-orange-100 to-amber-100 px-5 py-3 flex items-center gap-2">
-              <span className="text-2xl">🔥</span>
-              <span className="font-black text-orange-600 text-lg">{streak} day streak</span>
-            </div>
-            <div className="bubble bg-gradient-to-r from-yellow-100 to-amber-100 px-5 py-3 flex items-center gap-2">
-              <span className="text-2xl">⭐</span>
-              <span className="font-black text-amber-600 text-lg">{xp} XP</span>
+            <div className="xp-badge px-4 py-2 rounded-full">
+              <span className="text-sm font-medium text-[#B89F6C]">⭐ {xp} XP</span>
             </div>
           </div>
-
-          {/* Level Card */}
-          <div className="bubble bg-white p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-300 via-orange-400 to-pink-500 flex items-center justify-center text-3xl font-black text-white shadow-lg">
-                  {level}
-                </div>
-                <div>
-                  <p className="font-display font-black text-gray-800 text-xl">Level {level}</p>
-                  <p className="text-gray-500 font-bold">Keep going! 💪</p>
-                </div>
+          
+          {/* Level */}
+          <div className="card mt-6 p-5">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="level-badge w-14 h-14 rounded-full flex items-center justify-center">
+                <span className="text-xl font-semibold text-[#8B7355]">{level}</span>
+              </div>
+              <div>
+                <p className="font-medium text-[#3D3935]">Level {level}</p>
+                <p className="text-sm text-[#9A9086]">{100 - (xp % 100)} XP to next level</p>
               </div>
             </div>
-            <div className="w-full bg-gray-100 rounded-full h-5">
-              <div 
-                className="h-5 rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 progress-fill"
-                style={{ width: `${progress}%` }}
-              />
+            <div className="progress-track h-3">
+              <div className="progress-fill h-3" style={{ width: `${progress}%` }} />
             </div>
-            <p className="text-gray-400 font-bold text-sm mt-2 text-center">{100 - (xp % 100)} XP to Level {level + 1}</p>
           </div>
         </div>
       </header>
 
-      <main className="max-w-md mx-auto px-5 pb-12">
-        {/* School Essentials */}
+      <main className="max-w-lg mx-auto px-6 py-8">
+        {/* School */}
         <div className="mb-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="h-px flex-1 bg-gradient-to-r from-blue-300 to-transparent" />
-            <h2 className="font-display font-black text-blue-600 text-lg">🎓 School Stuff</h2>
-            <div className="h-px flex-1 bg-gradient-to-l from-blue-300 to-transparent" />
+          <div className="section-divider">
+            <span className="text-xs tracking-[0.2em] uppercase text-[#9A9086]">School Essentials</span>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {schoolWorlds.map(world => {
-              const total = world.topics.reduce((a, t) => a + t.lessons.length, 0);
-              const done = world.topics.reduce((a, t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
+            {school.map(world => {
+              const total = world.topics.reduce((a,t) => a + t.lessons.length, 0);
+              const done = world.topics.reduce((a,t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
               return (
-                <button
-                  key={world.id}
-                  onClick={() => setSelectedWorld(world)}
-                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-6 text-center`}
-                >
-                  <span className="text-5xl block mb-3">{world.emoji}</span>
-                  <p className="font-display font-black text-gray-800 text-lg">{world.name}</p>
-                  <p className="text-gray-600 font-bold text-sm mt-1">{done}/{total} lessons</p>
+                <button key={world.id} onClick={() => setSelectedWorld(world)} className={`world-card ${world.accent} p-6 text-center`}>
+                  <span className="text-4xl block mb-3">{world.emoji}</span>
+                  <p className="font-serif text-lg text-[#3D3935]">{world.name}</p>
+                  <p className="text-xs text-[#9A9086] mt-1">{done}/{total} lessons</p>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Future Skills */}
+        {/* Future */}
         <div>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px flex-1 bg-gradient-to-r from-purple-300 to-transparent" />
-            <h2 className="font-display font-black text-purple-600 text-lg">🚀 Future Skills</h2>
-            <div className="h-px flex-1 bg-gradient-to-l from-purple-300 to-transparent" />
+          <div className="section-divider">
+            <span className="text-xs tracking-[0.2em] uppercase text-[#9A9086]">Future Skills</span>
           </div>
-          <p className="text-center text-gray-500 font-bold mb-5">What school won&apos;t teach you! 💡</p>
+          <p className="text-center text-sm text-[#9A9086] mb-6">What school doesn&apos;t teach you</p>
           <div className="grid grid-cols-2 gap-4">
-            {futureWorlds.map(world => {
-              const total = world.topics.reduce((a, t) => a + t.lessons.length, 0);
-              const done = world.topics.reduce((a, t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
+            {future.map(world => {
+              const total = world.topics.reduce((a,t) => a + t.lessons.length, 0);
+              const done = world.topics.reduce((a,t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
               return (
-                <button
-                  key={world.id}
-                  onClick={() => setSelectedWorld(world)}
-                  className={`world-bubble bg-gradient-to-br ${world.gradient} p-6 text-center`}
-                >
-                  <span className="text-5xl block mb-3">{world.emoji}</span>
-                  <p className="font-display font-black text-gray-800 text-lg">{world.name}</p>
-                  <p className="text-gray-600 font-bold text-sm mt-1">{done}/{total} lessons</p>
+                <button key={world.id} onClick={() => setSelectedWorld(world)} className={`world-card ${world.accent} p-6 text-center`}>
+                  <span className="text-4xl block mb-3">{world.emoji}</span>
+                  <p className="font-serif text-lg text-[#3D3935]">{world.name}</p>
+                  <p className="text-xs text-[#9A9086] mt-1">{done}/{total} lessons</p>
                 </button>
               );
             })}
@@ -764,8 +543,8 @@ export default function FutureKidsAcademy() {
         </div>
       </main>
 
-      <footer className="text-center py-8 text-gray-400 font-bold">
-        Made with 💜 for Carter, Kingston & Sister
+      <footer className="text-center py-8 border-t border-[#E8DDD4]">
+        <p className="text-xs text-[#9A9086]">Made with love for Carter, Kingston & Sister</p>
       </footer>
     </div>
   );
