@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -18,14 +18,16 @@
 }
 
 body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--cream);
   color: var(--dark-brown);
   min-height: 100vh;
 }
 
-.font-serif {
-  font-family: 'DM Serif Display', Georgia, serif;
+/* Fun display font for headings */
+.font-display {
+  font-family: 'Fredoka', 'Comic Sans MS', cursive;
+  font-weight: 600;
 }
 
 /* Card styling - clean & elegant */
@@ -67,6 +69,7 @@ body {
 .accent-amber { background: linear-gradient(135deg, #FEF7E8 0%, #FCF0D4 100%); }
 .accent-purple { background: linear-gradient(135deg, #F3E8FD 0%, #E8D4F7 100%); }
 .accent-teal { background: linear-gradient(135deg, #E8F6F5 0%, #D4EDEB 100%); }
+.accent-indigo { background: linear-gradient(135deg, #EDE7F6 0%, #D1C4E9 100%); }
 
 /* Progress bar */
 .progress-track {
