@@ -750,8 +750,30 @@ const worldsData: World[] = [
             activity: "Get some real coins. Sort them by type and count how much you have total!"
           }
         },
-        { id: 'mb2', title: 'Counting Money', description: 'Add it up', duration: '8 min', xp: 15 },
-        { id: 'mb3', title: 'Making Change', description: "What's left over", duration: '10 min', xp: 20 },
+        { id: 'mb2', title: 'Counting Money', description: 'Add it up', duration: '8 min', xp: 15,
+          content: {
+            intro: "Knowing how to count money is a superpower! Let's learn to add up coins and bills.",
+            sections: [
+              { title: "Counting Coins", text: "Start with the biggest coins first:\n\n1️⃣ Count quarters: 25, 50, 75, 100...\n2️⃣ Add dimes: +10 each\n3️⃣ Add nickels: +5 each\n4️⃣ Add pennies: +1 each\n\nExample: 2 quarters + 1 dime + 3 pennies = 50 + 10 + 3 = 63¢", funFact: "There are 293 ways to make change for a dollar using coins!" },
+              { title: "Counting Bills", text: "Bills are easier - they're already labeled!\n\n$20 + $10 + $5 + $1 = $36\n\nTip: Group same bills together first, then add." },
+              { title: "Dollars and Cents", text: "The dot separates dollars from cents:\n\n$3.75 = 3 dollars and 75 cents\n$10.50 = 10 dollars and 50 cents\n\nRemember: 100 cents = 1 dollar" }
+            ],
+            quiz: { question: "How much is 3 quarters and 2 dimes?", options: ["85 cents", "95 cents", "75 cents"], correct: 1 },
+            activity: "Empty your piggy bank and count everything! Group coins by type first."
+          }
+        },
+        { id: 'mb3', title: 'Making Change', description: "What's left over", duration: '10 min', xp: 20,
+          content: {
+            intro: "When you pay more than something costs, you get change back. Let's learn how!",
+            sections: [
+              { title: "What is Change?", text: "Change = What you paid - What it costs\n\nYou give: $5.00\nItem costs: $3.25\nChange: $5.00 - $3.25 = $1.75", funFact: "Cashiers are trained to count change UP from the price to the amount paid!" },
+              { title: "Counting Up Method", text: "Start at the price, count up to what you paid:\n\nPrice: $3.25, Paid: $5.00\n\n$3.25 → $3.50 (add quarter)\n$3.50 → $4.00 (add 2 quarters)\n$4.00 → $5.00 (add $1)\n\nChange: 25¢ + 50¢ + $1 = $1.75" },
+              { title: "Quick Tips", text: "🧠 Round to easy numbers\n🧮 Use mental math\n✅ Always count your change\n💡 If price ends in 99¢, change is easy!" }
+            ],
+            quiz: { question: "You buy a $2.50 item with $5. What's your change?", options: ["$2.00", "$2.50", "$3.50"], correct: 1 },
+            activity: "Play store! Price items, 'buy' them, and practice making change."
+          }
+        },
         { id: 'mb4', title: 'Needs vs Wants', description: 'What you need', duration: '8 min', xp: 15,
           content: {
             intro: "Understanding the difference between what you NEED and what you WANT is the first step to being smart with money!",
@@ -765,20 +787,126 @@ const worldsData: World[] = [
         },
       ]},
       { id: 'saving', name: 'Saving', emoji: '🐷', lessons: [
-        { id: 'sv1', title: 'Why Save', description: 'For the future', duration: '8 min', xp: 20 },
-        { id: 'sv2', title: 'Goals', description: 'What to save for', duration: '8 min', xp: 20 },
-        { id: 'sv3', title: 'Piggy Bank', description: 'Start small', duration: '8 min', xp: 20 },
-        { id: 'sv4', title: 'Bank Accounts', description: 'Where adults save', duration: '10 min', xp: 25 },
+        { id: 'sv1', title: 'Why Save', description: 'For the future', duration: '8 min', xp: 20,
+          content: {
+            intro: "Saving money means keeping some for later instead of spending it all now. It's one of the most important money skills!",
+            sections: [
+              { title: "What is Saving?", text: "Saving = Not spending money now so you have it later\n\n🎮 Want a $60 video game? Save $10/week for 6 weeks!\n🚗 Want a car someday? Start saving now!", funFact: "If you save just $1 a day, you'll have $365 at the end of the year!" },
+              { title: "Why Save?", text: "People save for:\n\n🎯 Goals - Big things you want to buy\n🆘 Emergencies - Unexpected problems\n🔮 Future - College, car, house someday\n😌 Peace of mind - Less stress about money" },
+              { title: "The Secret", text: "Pay yourself FIRST!\n\nWhen you get money:\n1️⃣ Save some immediately\n2️⃣ THEN spend what's left\n\nNot the other way around!" }
+            ],
+            quiz: { question: "What should you do FIRST when you get money?", options: ["Spend it", "Save some", "Give it away"], correct: 1 },
+            activity: "Decide on ONE thing you want to save for. How much does it cost? How long will it take?"
+          }
+        },
+        { id: 'sv2', title: 'Goals', description: 'What to save for', duration: '8 min', xp: 20,
+          content: {
+            intro: "Having a savings GOAL makes saving way easier. Let's set one!",
+            sections: [
+              { title: "Short-Term Goals", text: "Things you can save for in weeks or months:\n\n🎮 Video game ($60) - 6 weeks at $10/week\n📚 Book ($15) - 3 weeks at $5/week\n🎁 Gift for someone ($25) - 5 weeks at $5/week", funFact: "People who write down their goals are 42% more likely to achieve them!" },
+              { title: "Long-Term Goals", text: "Things that take months or years:\n\n📱 Phone ($200) - 10 months at $20/month\n🚲 Bike ($300) - Save birthday money for 2 years\n🎓 College fund - Start now, use later!" },
+              { title: "Make a Plan", text: "For any goal:\n\n1️⃣ What do you want? (Be specific!)\n2️⃣ How much does it cost?\n3️⃣ When do you want it?\n4️⃣ How much per week/month?\n\nGoal ÷ Time = Weekly savings needed" }
+            ],
+            activity: "Pick something you want. Write down: What, Cost, When, and how much you'll save each week."
+          }
+        },
+        { id: 'sv3', title: 'Piggy Bank', description: 'Start small', duration: '8 min', xp: 20,
+          content: {
+            intro: "A piggy bank is your first savings tool. It's simple but powerful!",
+            sections: [
+              { title: "Why Piggy Banks Work", text: "🐷 They're always there\n👀 You can SEE your money grow\n🔒 Harder to spend on impulse\n🎯 Visual reminder of your goal", funFact: "Piggy banks got their name from 'pygg' - a type of clay used to make jars in the Middle Ages!" },
+              { title: "Piggy Bank Tips", text: "Make your piggy bank work better:\n\n📍 Put it where you'll see it daily\n🏷️ Label it with your goal\n📅 Add money on a schedule\n🎨 Decorate it to make it special\n❌ Don't open it until you reach your goal!" },
+              { title: "Beyond the Piggy Bank", text: "Other ways to save:\n\n🫙 Clear jar - watch money pile up!\n📦 Savings box with slots\n✉️ Envelopes for different goals\n🏦 Bank account (when you're older)" }
+            ],
+            activity: "Make your own piggy bank! Use a jar, label it with your goal, and decorate it."
+          }
+        },
+        { id: 'sv4', title: 'Bank Accounts', description: 'Where adults save', duration: '10 min', xp: 25,
+          content: {
+            intro: "Banks are like super-safe piggy banks that can actually make your money grow!",
+            sections: [
+              { title: "What is a Bank?", text: "A bank is a place that:\n\n🏦 Keeps your money safe\n💰 Pays you interest (free money!)\n💳 Lets you access money when needed\n📱 You can check online anytime", funFact: "Banks have been around for over 4,000 years - ancient temples stored grain and gold!" },
+              { title: "Types of Accounts", text: "🏦 Savings Account - For money you're saving (earns interest)\n✅ Checking Account - For money you spend often (easy access)\n👶 Kids' Savings - Special accounts for young savers", funFact: "Your money in the bank is insured up to $250,000 by the government!" },
+              { title: "Interest - Free Money!", text: "Interest is money the bank PAYS YOU for keeping your money there!\n\nExample: $100 at 2% interest = $2 per year\n\nIt's not much at first, but it adds up over time!" }
+            ],
+            quiz: { question: "What does a savings account give you that a piggy bank doesn't?", options: ["Safety", "Interest", "Colors"], correct: 1 },
+            activity: "Ask a parent about opening a savings account together!"
+          }
+        },
       ]},
       { id: 'earning', name: 'Earning', emoji: '💵', lessons: [
-        { id: 'er1', title: 'Jobs', description: 'How to earn', duration: '8 min', xp: 20 },
-        { id: 'er2', title: 'Allowance', description: 'Earn at home', duration: '8 min', xp: 20 },
-        { id: 'er3', title: 'Kid Business', description: 'Make your own', duration: '10 min', xp: 25 },
+        { id: 'er1', title: 'Jobs', description: 'How to earn', duration: '8 min', xp: 20,
+          content: {
+            intro: "Money doesn't grow on trees - you have to EARN it! Let's learn how.",
+            sections: [
+              { title: "Trading Time for Money", text: "Most people earn money by working:\n\n⏰ You give your TIME\n💪 You use your SKILLS\n💵 You get paid MONEY\n\nThis is called 'trading time for money' - the most common way to earn.", funFact: "The word 'salary' comes from 'salt' - Roman soldiers were sometimes paid in salt!" },
+              { title: "Types of Work", text: "👔 Employee - Work for a company, get paid regularly\n🛠️ Freelancer - Work for yourself, different clients\n🏪 Business owner - Create a company, earn from sales\n💰 Investor - Make money work for you", funFact: "Some jobs pay hourly, some pay yearly salary, some pay per project!" },
+              { title: "Getting Paid More", text: "Want to earn more? Build valuable skills:\n\n📚 Learn things others can't do\n💻 Technology skills pay well\n🗣️ Communication matters\n🎯 Solve big problems = big money" }
+            ],
+            quiz: { question: "What do you trade for money at a job?", options: ["Toys", "Time and skills", "Food"], correct: 1 },
+            activity: "Ask a parent about their job. What do they do? How did they learn to do it?"
+          }
+        },
+        { id: 'er2', title: 'Allowance', description: 'Earn at home', duration: '8 min', xp: 20,
+          content: {
+            intro: "An allowance is money you earn regularly, usually for helping around the house!",
+            sections: [
+              { title: "What is Allowance?", text: "Allowance is regular money you get, usually weekly:\n\n🏠 Some families give it for chores\n📅 Some give it just for being in the family\n💰 Amount varies - $5 to $20+ per week is common", funFact: "The average allowance in America is about $10-15 per week!" },
+              { title: "Earning More", text: "Want more than your regular allowance?\n\n🧹 Extra chores = Extra money\n🚗 Wash the car\n🌿 Yard work\n🐕 Pet care\n📦 Help organize\n\nAsk your parents what jobs they'd pay for!" },
+              { title: "Making it Work", text: "Tips for allowance success:\n\n📋 Know what's expected of you\n⏰ Do chores without being asked\n💰 Save some, spend some\n📈 Ask for a raise after showing responsibility" }
+            ],
+            activity: "Make a list of chores you could do to earn extra money. Ask your parents which ones they'd pay for!"
+          }
+        },
+        { id: 'er3', title: 'Kid Business', description: 'Make your own', duration: '10 min', xp: 25,
+          content: {
+            intro: "Why wait to grow up? Kids can start businesses too - and make real money!",
+            sections: [
+              { title: "Kid Business Ideas", text: "Easy businesses to start NOW:\n\n🍋 Lemonade stand\n🐕 Dog walking/Pet sitting\n🌿 Lawn care/Yard work\n🧹 Car washing\n🎨 Selling crafts\n👶 Mother's helper\n💻 Tech help for neighbors", funFact: "Warren Buffett (billionaire investor) started selling gum door-to-door at age 6!" },
+              { title: "Steps to Start", text: "1️⃣ Pick something you enjoy\n2️⃣ Figure out what to charge\n3️⃣ Get supplies you need\n4️⃣ Tell people about it\n5️⃣ Do GREAT work\n6️⃣ Save your profits!" },
+              { title: "Be Professional", text: "Even as a kid, be professional:\n\n✅ Show up on time\n✅ Do what you promised\n✅ Be polite and friendly\n✅ Ask for feedback\n✅ Thank your customers\n\nHappy customers = More business!" }
+            ],
+            quiz: { question: "What's the most important thing in business?", options: ["Having fun", "Happy customers", "Working alone"], correct: 1 },
+            activity: "Think of 3 business ideas you could start. Pick your favorite and write a simple plan!"
+          }
+        },
       ]},
       { id: 'budget', name: 'Budgeting', emoji: '📊', lessons: [
-        { id: 'bg1', title: 'What is a Budget', description: 'Plan your money', duration: '8 min', xp: 20 },
-        { id: 'bg2', title: 'Three Jars', description: 'Save, Spend, Give', duration: '10 min', xp: 25 },
-        { id: 'bg3', title: 'Tracking', description: 'Where money goes', duration: '10 min', xp: 25 },
+        { id: 'bg1', title: 'What is a Budget', description: 'Plan your money', duration: '8 min', xp: 20,
+          content: {
+            intro: "A budget is a plan for your money. It tells your money where to go instead of wondering where it went!",
+            sections: [
+              { title: "What is a Budget?", text: "Budget = Money In vs Money Out\n\n💵 Income: Money you get\n💸 Expenses: Money you spend\n\nGoal: Spend LESS than you earn!", funFact: "Only about 1 in 3 people use a budget. The ones who do are much better with money!" },
+              { title: "Why Budget?", text: "Budgets help you:\n\n🎯 Reach your savings goals\n🚫 Avoid running out of money\n😌 Feel less stressed\n🧠 Make smarter choices\n📈 Build wealth over time" },
+              { title: "Simple Budget", text: "A simple budget:\n\n1️⃣ Write down how much you get\n2️⃣ Write down what you want to buy\n3️⃣ Make sure #2 isn't bigger than #1!\n\nIf you want more stuff, earn more or wait longer." }
+            ],
+            quiz: { question: "What should your budget make sure of?", options: ["Spend more than you earn", "Spend less than you earn", "Spend exactly what you earn"], correct: 1 },
+            activity: "Create a simple budget: Write down money you'll get this month and what you want to spend it on."
+          }
+        },
+        { id: 'bg2', title: 'Three Jars', description: 'Save, Spend, Give', duration: '10 min', xp: 25,
+          content: {
+            intro: "The Three Jar system is the easiest way to manage your money like a pro!",
+            sections: [
+              { title: "The Three Jars", text: "Every time you get money, split it:\n\n🐷 SAVE Jar (40%) - For goals and future\n🎮 SPEND Jar (50%) - For fun stuff now\n❤️ GIVE Jar (10%) - To help others\n\nThis teaches balance!", funFact: "Many millionaires started with a system just like this when they were kids!" },
+              { title: "Why It Works", text: "This system teaches:\n\n💰 Delayed gratification (saving)\n🎉 Enjoying life (spending)\n🤝 Generosity (giving)\n\nAll three are important for a happy life!" },
+              { title: "Making It Work", text: "Example: You get $10\n\n🐷 SAVE: $4 (40%)\n🎮 SPEND: $5 (50%)\n❤️ GIVE: $1 (10%)\n\nYou can adjust percentages as you learn what works for you!" }
+            ],
+            activity: "Set up three jars (or envelopes). Label them SAVE, SPEND, GIVE. Split your next allowance!"
+          }
+        },
+        { id: 'bg3', title: 'Tracking', description: 'Where money goes', duration: '10 min', xp: 25,
+          content: {
+            intro: "Do you ever wonder where all your money went? Tracking helps you find out!",
+            sections: [
+              { title: "Why Track?", text: "Tracking shows you:\n\n📊 Where money actually goes\n🔍 Sneaky spending you didn't notice\n📈 Progress toward goals\n💡 Where you can do better", funFact: "People who track spending save an average of 15% more money!" },
+              { title: "How to Track", text: "Simple tracking method:\n\n📓 Notebook - Write every purchase\n📱 App - Use a money tracking app\n📋 Spreadsheet - For older kids\n🧾 Save receipts - Review weekly" },
+              { title: "Review Your Spending", text: "Once a week, look at what you spent:\n\n❓ Did I need all of this?\n💭 Any surprises?\n🎯 Am I on track for my goals?\n✅ What can I do better?\n\nNo judgment - just learning!" }
+            ],
+            quiz: { question: "Why should you track your spending?", options: ["To feel bad", "To see where money goes", "To spend more"], correct: 1 },
+            activity: "Track every penny you spend this week. At the end, add it up. Surprised?"
+          }
+        },
       ]},
     ]
   },
@@ -789,7 +917,18 @@ const worldsData: World[] = [
     description: 'Make money grow',
     topics: [
       { id: 'intro', name: 'Basics', emoji: '🌱', lessons: [
-        { id: 'ib1', title: 'What is Investing', description: 'Grow your money', duration: '8 min', xp: 25 },
+        { id: 'ib1', title: 'What is Investing', description: 'Grow your money', duration: '8 min', xp: 25,
+          content: {
+            intro: "Investing means making your money work FOR you, so it grows even while you sleep!",
+            sections: [
+              { title: "Saving vs Investing", text: "💰 Saving = Keeping money safe (slow growth)\n📈 Investing = Putting money to work (faster growth, some risk)\n\nSaving is like walking. Investing is like taking a car - faster but you need to learn how!", funFact: "If you invested $1,000 at age 10 and earned 10% yearly, you'd have over $117,000 by age 60!" },
+              { title: "How Investing Works", text: "When you invest, you buy something that can grow:\n\n📊 Stocks - Own part of a company\n🏠 Real Estate - Own property\n🏢 Businesses - Own or start one\n\nAs these grow, your money grows!" },
+              { title: "Why Start Young?", text: "TIME is your superpower!\n\n⏰ Start at 10 = LOTS of time to grow\n⏰ Start at 40 = Less time\n\nEven small amounts become huge with enough time. Start NOW!" }
+            ],
+            quiz: { question: "What's the difference between saving and investing?", options: ["Nothing", "Investing grows faster but has risk", "Saving is better"], correct: 1 },
+            activity: "Ask a parent: Do they invest? In what? Why did they choose it?"
+          }
+        },
         { id: 'ib2', title: 'Compound Interest', description: 'Magic of growth', duration: '10 min', xp: 30,
           content: {
             intro: "Compound interest is like a snowball rolling downhill - it starts small but gets HUGE over time!",
@@ -801,8 +940,30 @@ const worldsData: World[] = [
             activity: "Use a calculator: If you save $1 and double it every day, how much would you have after 30 days? (Hint: It's more than a million!)"
           }
         },
-        { id: 'ib3', title: 'Start Early', description: 'Time is power', duration: '8 min', xp: 25 },
-        { id: 'ib4', title: 'Risk & Reward', description: 'Balance', duration: '10 min', xp: 30 },
+        { id: 'ib3', title: 'Start Early', description: 'Time is power', duration: '8 min', xp: 25,
+          content: {
+            intro: "The earlier you start investing, the more your money can grow. Time is your secret weapon!",
+            sections: [
+              { title: "The Power of Time", text: "Meet two investors:\n\n👧 Early Emma starts at 20, invests $100/month for 10 years, then STOPS\n👦 Late Larry starts at 30, invests $100/month for 30 years\n\nWho has more at 60? EMMA! Even though she invested less total!", funFact: "Emma invested $12,000 total. Larry invested $36,000. But Emma ends up with MORE because she started earlier!" },
+              { title: "Why Time Wins", text: "🧮 Compound interest needs TIME to work its magic\n📈 More years = More doubling periods\n💤 Your money grows while you sleep\n⏰ You can't get time back - start NOW" },
+              { title: "Even Small Amounts", text: "Starting with just $1/day:\n\n📅 In 10 years: ~$6,000\n📅 In 20 years: ~$20,000\n📅 In 40 years: ~$180,000!\n\nSmall amounts + lots of time = BIG results" }
+            ],
+            quiz: { question: "Who usually has more money: early starter or late starter?", options: ["Late starter", "Early starter", "Same"], correct: 1 },
+            activity: "Use an online compound interest calculator. See how much $100/month would grow over 40 years!"
+          }
+        },
+        { id: 'ib4', title: 'Risk & Reward', description: 'Balance', duration: '10 min', xp: 30,
+          content: {
+            intro: "In investing, higher rewards usually come with higher risks. Learning to balance them is key!",
+            sections: [
+              { title: "What is Risk?", text: "Risk = Chance of losing money\n\n🟢 Low risk: Savings account (safe but grows slow)\n🟡 Medium risk: Bonds, index funds (balanced)\n🔴 High risk: Individual stocks, crypto (could win big or lose big)", funFact: "The stock market goes UP most years, but some years it goes down. That's the risk!" },
+              { title: "Risk vs Reward", text: "Generally:\n\n😴 Low risk = Low reward\n⚖️ Medium risk = Medium reward\n🎢 High risk = High reward (or loss!)\n\nYou have to accept some risk to grow your money faster than inflation." },
+              { title: "Managing Risk", text: "Smart investors reduce risk by:\n\n🥚 Not putting all eggs in one basket (diversification)\n⏰ Investing for the long term\n📚 Learning before investing\n😌 Not panicking when markets drop\n💰 Only investing what they can afford to lose" }
+            ],
+            quiz: { question: "Higher potential reward usually means...", options: ["Lower risk", "Higher risk", "No risk"], correct: 1 },
+            activity: "If you had $100 to invest, how would you split it between safe and risky investments? Why?"
+          }
+        },
       ]},
       { id: 'stocks', name: 'Stocks', emoji: '📊', lessons: [
         { id: 'st1', title: 'What is a Stock', description: 'Own a company', duration: '10 min', xp: 30,
@@ -815,14 +976,80 @@ const worldsData: World[] = [
             ]
           }
         },
-        { id: 'st2', title: 'How Stocks Work', description: 'Buy low, sell high', duration: '10 min', xp: 30 },
-        { id: 'st3', title: 'Good Companies', description: 'What makes them great', duration: '12 min', xp: 35 },
-        { id: 'st4', title: 'Dividends', description: 'Get paid to own', duration: '10 min', xp: 30 },
+        { id: 'st2', title: 'How Stocks Work', description: 'Buy low, sell high', duration: '10 min', xp: 30,
+          content: {
+            intro: "The basic idea of stocks is simple: buy low, sell high. Let's learn how!",
+            sections: [
+              { title: "Supply and Demand", text: "Stock prices change based on:\n\n📈 More buyers = Price goes UP\n📉 More sellers = Price goes DOWN\n\nPrices change every second during trading hours!", funFact: "Some stocks have moved 10% in a single day based on news!" },
+              { title: "Buy Low, Sell High", text: "The goal:\n\n💵 Buy a stock at $10\n📈 Wait for it to grow\n💰 Sell it at $20\n🎉 You made $10 profit!\n\nBut if it drops to $5 and you sell, you LOSE $5." },
+              { title: "Long-Term Thinking", text: "Smart investors:\n\n⏰ Hold stocks for years, not days\n📉 Don't panic when prices drop\n📈 Trust that good companies grow over time\n💡 Buy quality, not hype" }
+            ],
+            quiz: { question: "To make money on stocks, you want to...", options: ["Buy high, sell low", "Buy low, sell high", "Never sell"], correct: 1 },
+            activity: "Pick a company you like. Look up its stock price today. Check again in a week. Did it go up or down?"
+          }
+        },
+        { id: 'st3', title: 'Good Companies', description: 'What makes them great', duration: '12 min', xp: 35,
+          content: {
+            intro: "Not all companies are good investments. Let's learn what makes some companies better than others!",
+            sections: [
+              { title: "Signs of Good Companies", text: "Look for:\n\n💰 Makes money (profitable)\n📈 Growing every year\n🏆 Leader in their industry\n😊 Customers love them\n🧠 Smart management\n💪 Strong brand name", funFact: "Warren Buffett says: 'Buy companies a fool could run, because eventually one will.'" },
+              { title: "Products You Know", text: "Good place to start:\n\n🍎 Apple - iPhones, MacBooks\n🎮 Nintendo - Video games\n👟 Nike - Shoes, sports\n🍔 McDonald's - Fast food\n🎬 Disney - Movies, parks\n\nCompanies you use and love!" },
+              { title: "What to Avoid", text: "Red flags:\n\n📉 Losing money every year\n💸 Too much debt\n😡 Bad reputation\n🆕 Too new (unproven)\n🎰 'Get rich quick' promises" }
+            ],
+            quiz: { question: "Good companies to invest in usually...", options: ["Lose money", "Make money and grow", "Are brand new"], correct: 1 },
+            activity: "List 5 products you use every day. Research who makes them. Are those good companies?"
+          }
+        },
+        { id: 'st4', title: 'Dividends', description: 'Get paid to own', duration: '10 min', xp: 30,
+          content: {
+            intro: "Some companies PAY you just for owning their stock. This is called a dividend!",
+            sections: [
+              { title: "What are Dividends?", text: "Dividends = Cash payments to stock owners\n\n🏢 Company makes profit\n💰 They share some with owners\n📅 Usually paid every 3 months\n🔄 You can reinvest or spend it", funFact: "Some companies have paid dividends for over 100 years straight!" },
+              { title: "Dividend Examples", text: "If you own stock paying $1/share yearly:\n\n📊 100 shares = $100/year\n📊 1,000 shares = $1,000/year\n📊 10,000 shares = $10,000/year\n\nFree money just for owning!" },
+              { title: "The Power of Reinvesting", text: "When you reinvest dividends:\n\n💵 Get dividend → Buy more shares\n📈 More shares → Bigger dividend next time\n🔄 Repeat forever\n💰 Snowball effect!\n\nThis is how wealth builds passively." }
+            ],
+            quiz: { question: "What is a dividend?", options: ["A stock price", "Payment to stock owners", "A type of bond"], correct: 1 },
+            activity: "Look up 'dividend aristocrats' - companies that have raised dividends for 25+ years!"
+          }
+        },
       ]},
       { id: 'other', name: 'Other', emoji: '🏠', lessons: [
-        { id: 'oi1', title: 'Real Estate', description: 'Own buildings', duration: '10 min', xp: 30 },
-        { id: 'oi2', title: 'Index Funds', description: 'Own the market', duration: '10 min', xp: 30 },
-        { id: 'oi3', title: 'Business', description: 'Best investment', duration: '12 min', xp: 35 },
+        { id: 'oi1', title: 'Real Estate', description: 'Own buildings', duration: '10 min', xp: 30,
+          content: {
+            intro: "Real estate means owning land and buildings. It's one of the oldest ways to build wealth!",
+            sections: [
+              { title: "Types of Real Estate", text: "You can own:\n\n🏠 Houses - Rent them out\n🏢 Apartments - Multiple units\n🏪 Commercial - Stores, offices\n🏭 Industrial - Warehouses\n🌳 Land - Wait for it to grow in value", funFact: "About 90% of millionaires have invested in real estate!" },
+              { title: "How You Make Money", text: "Two ways to profit:\n\n🏠 Rental income - Tenants pay you monthly\n📈 Appreciation - Property value goes up\n\nYou can get BOTH at the same time!" },
+              { title: "Starting Without Buying", text: "Can't buy a building yet? Try:\n\n📊 REITs - Real estate investment trusts (buy like stocks)\n👥 Crowdfunding - Pool money with others\n🏦 Real estate funds\n\nOwn real estate with just $100!" }
+            ],
+            quiz: { question: "How do real estate investors usually make money?", options: ["Rent and appreciation", "Just luck", "Selling quickly"], correct: 0 },
+            activity: "Look at houses for sale in your area online. What do they cost? How much would rent be?"
+          }
+        },
+        { id: 'oi2', title: 'Index Funds', description: 'Own the market', duration: '10 min', xp: 30,
+          content: {
+            intro: "Index funds let you own hundreds of companies at once! It's the easiest way to invest.",
+            sections: [
+              { title: "What is an Index Fund?", text: "An index fund:\n\n📊 Buys ALL companies in an index (like S&P 500)\n🎯 Matches the market's performance\n💰 Low fees\n🧘 Less stress than picking stocks", funFact: "The S&P 500 index fund has returned about 10% per year on average since 1926!" },
+              { title: "Why Index Funds Win", text: "Most professional stock pickers LOSE to index funds!\n\n📈 Diversification - Own 500+ companies\n💸 Low costs - Fees under 0.1%\n⏰ No research needed\n😴 Set it and forget it" },
+              { title: "Popular Index Funds", text: "Common ones to know:\n\n🇺🇸 S&P 500 - 500 biggest US companies\n🌍 Total World - All companies globally\n💻 Nasdaq - Tech-heavy\n📊 Total Market - Entire US market" }
+            ],
+            quiz: { question: "What do index funds do?", options: ["Pick the best stocks", "Buy all stocks in an index", "Only buy one company"], correct: 1 },
+            activity: "Look up the S&P 500. What companies are in it? Do you recognize any?"
+          }
+        },
+        { id: 'oi3', title: 'Business', description: 'Best investment', duration: '12 min', xp: 35,
+          content: {
+            intro: "The best investment might be starting your own business. You control it, you keep the profits!",
+            sections: [
+              { title: "Why Business is #1", text: "Owning a business can:\n\n💰 Make unlimited income\n🎮 You control everything\n📈 Build real value\n💼 Create jobs for others\n🏆 Leave a legacy", funFact: "Most billionaires got rich by owning businesses, not by working for someone else!" },
+              { title: "Business vs Job", text: "Job: Trade time for money (limited)\nBusiness: Build something that makes money (unlimited)\n\n⏰ A job pays you once for your work\n🔄 A business can pay you forever" },
+              { title: "Starting Young", text: "Start learning business NOW:\n\n🍋 Lemonade stand basics\n🐕 Pet sitting/dog walking\n💻 Online business\n🎨 Sell crafts or art\n\nEvery big business started small!" }
+            ],
+            quiz: { question: "Why can business be the best investment?", options: ["It's easy", "Unlimited potential", "No work required"], correct: 1 },
+            activity: "Imagine you could start any business. What would it be? Who would your customers be?"
+          }
+        },
       ]},
     ]
   },
@@ -843,21 +1070,136 @@ const worldsData: World[] = [
             ]
           }
         },
-        { id: 'en2', title: 'Kid Bosses', description: 'Kids who made it', duration: '10 min', xp: 30 },
-        { id: 'en3', title: 'Find Problems', description: 'Business solves problems', duration: '10 min', xp: 30 },
-        { id: 'en4', title: 'Your Idea', description: 'What will you create', duration: '12 min', xp: 35 },
+        { id: 'en2', title: 'Kid Bosses', description: 'Kids who made it', duration: '10 min', xp: 30,
+          content: {
+            intro: "Think you're too young to start a business? These kids proved everyone wrong!",
+            sections: [
+              { title: "Amazing Kid Entrepreneurs", text: "🎀 Moziah Bridges - Age 9: Started Mo's Bows, makes custom bow ties. Now a millionaire with deals on Shark Tank!\n\n🍋 Mikaila Ulmer - Age 4: Started Me & the Bees Lemonade. Sold to Whole Foods nationwide!\n\n📚 Cory Nieves - Age 6: Started Mr. Cory's Cookies. Featured on TV, supplies major stores!", funFact: "There are over 8 million kid entrepreneurs in the world!" },
+              { title: "What They Have in Common", text: "All successful kid bosses:\n\n💡 Found a problem to solve\n❤️ Were passionate about it\n💪 Worked hard\n🔄 Learned from mistakes\n🙏 Had supportive family" },
+              { title: "You Can Do It Too", text: "Your advantages as a kid:\n\n⏰ Time to learn and fail\n🧠 Fresh ideas adults miss\n😊 People want to support kids\n💸 Low costs to start\n🌟 It's impressive for your future!" }
+            ],
+            activity: "Research one kid entrepreneur online. What did they start? What can you learn from them?"
+          }
+        },
+        { id: 'en3', title: 'Find Problems', description: 'Business solves problems', duration: '10 min', xp: 30,
+          content: {
+            intro: "Every successful business solves a PROBLEM. Find a problem, and you've found a business idea!",
+            sections: [
+              { title: "Problems = Opportunities", text: "When someone says 'I wish...' that's a business!\n\n😫 'I wish someone would walk my dog' → Dog walking business\n😫 'I wish I could find a good tutor' → Tutoring business\n😫 'I wish lawns mowed themselves' → Lawn care business", funFact: "Uber was started because the founders couldn't get a taxi on a snowy night!" },
+              { title: "How to Find Problems", text: "Look for:\n\n😤 What annoys people?\n⏰ What takes too long?\n💰 What costs too much?\n🤷 What's confusing?\n🔧 What's broken?\n\nEvery complaint is a business waiting to happen!" },
+              { title: "Validating Your Idea", text: "Before starting, ask:\n\n❓ Do enough people have this problem?\n💵 Will they pay to solve it?\n🤔 Can I actually solve it?\n🏃 Am I excited to do this?\n\nTalk to potential customers FIRST!" }
+            ],
+            quiz: { question: "What does every good business do?", options: ["Makes money fast", "Solves a problem", "Copies others"], correct: 1 },
+            activity: "List 5 problems you see around you. Which one could YOU solve?"
+          }
+        },
+        { id: 'en4', title: 'Your Idea', description: 'What will you create', duration: '12 min', xp: 35,
+          content: {
+            intro: "Time to create YOUR business idea! Let's use everything you've learned.",
+            sections: [
+              { title: "Brainstorming", text: "Answer these:\n\n🎯 What are you good at?\n❤️ What do you enjoy?\n🔍 What problems do you see?\n👥 Who could you help?\n💪 What would you work on for free?", funFact: "The best businesses combine what you're good at with what people need!" },
+              { title: "Your Business Plan", text: "Fill in the blanks:\n\n🎯 My business will: _______\n👥 My customers are: _______\n💡 The problem I solve: _______\n💰 I'll charge: $_______\n🚀 I'll start by: _______" },
+              { title: "Taking Action", text: "Don't just plan - DO!\n\n1️⃣ Start SMALL\n2️⃣ Test with friends/family\n3️⃣ Get feedback\n4️⃣ Improve and repeat\n5️⃣ Grow gradually\n\nEvery expert was once a beginner!" }
+            ],
+            activity: "Complete your business plan above. Share it with a parent. Could you start this week?"
+          }
+        },
       ]},
       { id: 'start', name: 'Starting', emoji: '🎬', lessons: [
-        { id: 'sb1', title: 'Lemonade Stand', description: 'First business', duration: '10 min', xp: 30 },
-        { id: 'sb2', title: 'Products vs Services', description: 'Sell or do', duration: '10 min', xp: 30 },
-        { id: 'sb3', title: 'Customers', description: 'Who will buy', duration: '10 min', xp: 30 },
-        { id: 'sb4', title: 'Pricing', description: 'How much to charge', duration: '12 min', xp: 35 },
+        { id: 'sb1', title: 'Lemonade Stand', description: 'First business', duration: '10 min', xp: 30,
+          content: {
+            intro: "The lemonade stand is the perfect first business. Let's learn how to run one profitably!",
+            sections: [
+              { title: "Why Lemonade?", text: "Perfect starter business because:\n\n💰 Low cost to start ($10-20)\n🍋 Simple product\n☀️ Everyone wants it on hot days\n📍 No special location needed\n👶 Any age can do it", funFact: "Lemonade stands have been a kid business tradition for over 100 years!" },
+              { title: "The Numbers", text: "Let's do the math:\n\n🍋 Supplies cost: $10\n🥤 Makes 20 cups\n💰 Cost per cup: 50 cents\n💵 Sell for: $2 per cup\n📈 Profit per cup: $1.50\n🎉 Total profit: $30!", funFact: "That's a 300% markup - way more than most businesses!" },
+              { title: "Pro Tips", text: "Make your stand successful:\n\n📍 Busy location (near park, sports)\n🎨 Eye-catching sign\n😊 Be friendly and smile\n☀️ Pick hot days\n🍪 Offer add-ons (cookies!)\n💳 Maybe accept Venmo?" }
+            ],
+            activity: "Plan a lemonade stand: When? Where? How much will you charge? Make a list of supplies!"
+          }
+        },
+        { id: 'sb2', title: 'Products vs Services', description: 'Sell or do', duration: '10 min', xp: 30,
+          content: {
+            intro: "Businesses sell PRODUCTS (things) or SERVICES (doing stuff). What's the difference?",
+            sections: [
+              { title: "Products", text: "Products are THINGS you sell:\n\n🍋 Lemonade\n🎨 Art/Crafts\n🍪 Baked goods\n🧸 Toys you make\n📿 Jewelry\n\n✅ Can sell while you sleep\n❌ Need materials/inventory", funFact: "Digital products (like ebooks or apps) can be sold unlimited times with no extra cost!" },
+              { title: "Services", text: "Services are WORK you do:\n\n🐕 Dog walking\n🌿 Lawn mowing\n🧹 Cleaning\n📚 Tutoring\n👶 Babysitting\n\n✅ Start with no money\n❌ Trade time for money" },
+              { title: "Which is Better?", text: "Neither! Choose based on:\n\n🎯 Your skills\n⏰ Your available time\n💰 Your startup money\n❤️ What you enjoy\n\nMany businesses do BOTH!" }
+            ],
+            quiz: { question: "What is a service?", options: ["A thing you sell", "Work you do for someone", "A type of product"], correct: 1 },
+            activity: "List 3 products you could make and 3 services you could offer. Which excites you more?"
+          }
+        },
+        { id: 'sb3', title: 'Customers', description: 'Who will buy', duration: '10 min', xp: 30,
+          content: {
+            intro: "Not everyone will buy your product. The key is finding YOUR people - your target customers!",
+            sections: [
+              { title: "Who is Your Customer?", text: "Think about:\n\n👤 How old are they?\n📍 Where do they live?\n💰 How much money do they have?\n🤔 What problems do they have?\n❤️ What do they care about?", funFact: "A business that tries to sell to everyone usually sells to no one!" },
+              { title: "Finding Customers", text: "Where are your customers?\n\n🏘️ Neighbors - Yard work, pet care\n👨‍👩‍👧 Parents' friends - Babysitting\n🏫 School - Tutoring, crafts\n💻 Online - Worldwide!\n⛪ Community - Events, fairs" },
+              { title: "Keeping Customers", text: "Getting new customers is hard. Keep the ones you have!\n\n😊 Do great work\n🙏 Say thank you\n🔄 Ask for repeat business\n📣 Ask for referrals\n💝 Surprise them sometimes" }
+            ],
+            quiz: { question: "Why should you know your target customer?", options: ["So you can avoid them", "To sell to them better", "For fun"], correct: 1 },
+            activity: "For your business idea, describe your PERFECT customer in detail."
+          }
+        },
+        { id: 'sb4', title: 'Pricing', description: 'How much to charge', duration: '12 min', xp: 35,
+          content: {
+            intro: "Pricing is tricky - too high and nobody buys. Too low and you don't make money!",
+            sections: [
+              { title: "The Basics", text: "Your price must cover:\n\n💸 Cost of materials/supplies\n⏰ Your time (you deserve pay!)\n📈 Profit (money left over)\n\nFormula: Cost + Time + Profit = Price", funFact: "Most people price too LOW! Don't undervalue yourself!" },
+              { title: "Research Others", text: "See what others charge:\n\n🔍 Ask around\n💻 Search online\n📞 Call similar businesses\n\nYou can charge similar OR more if you're better!" },
+              { title: "Pricing Psychology", text: "Tricks that work:\n\n💰 $9.99 feels cheaper than $10\n📦 Bundle deals (3 for $25!)\n⭐ Premium option makes others look reasonable\n🆓 Free bonus with purchase\n💵 Round numbers feel premium" }
+            ],
+            quiz: { question: "Your price should at least cover...", options: ["Just materials", "Materials, time, and profit", "Whatever feels right"], correct: 1 },
+            activity: "Price your product/service: Materials + Your time + Profit. What's your final price?"
+          }
+        },
       ]},
       { id: 'ideas', name: 'Ideas', emoji: '💡', lessons: [
-        { id: 'bi1', title: 'Pet Sitting', description: 'Help with animals', duration: '8 min', xp: 25 },
-        { id: 'bi2', title: 'Yard Work', description: 'Help neighbors', duration: '8 min', xp: 25 },
-        { id: 'bi3', title: 'Crafts', description: 'Sell what you make', duration: '8 min', xp: 25 },
-        { id: 'bi4', title: 'Online', description: 'Sell on internet', duration: '10 min', xp: 30 },
+        { id: 'bi1', title: 'Pet Sitting', description: 'Help with animals', duration: '8 min', xp: 25,
+          content: {
+            intro: "Love animals? Pet sitting is a great business - and you get paid to play with pets!",
+            sections: [
+              { title: "What You Can Offer", text: "🐕 Dog walking - Daily walks\n🏠 Pet sitting - Care while owners travel\n🐱 Cat visits - Check in, feed, play\n🧹 Poop scooping - Clean yards\n🛁 Basic grooming - Brushing", funFact: "Americans spend over $100 BILLION on pets each year!" },
+              { title: "Getting Started", text: "Steps to start:\n\n1️⃣ Practice with family/friend pets\n2️⃣ Make flyers for neighbors\n3️⃣ Ask for references\n4️⃣ Set your prices\n5️⃣ Get supplies (bags, treats, leash)" },
+              { title: "Safety First", text: "Be safe:\n\n👤 Only work with known pets at first\n👨‍👩‍👧 Tell parents where you are\n📱 Have emergency contacts\n🐕 Know basic dog safety\n❌ Don't take aggressive pets" }
+            ],
+            activity: "Create a pet sitting flyer with your services and prices!"
+          }
+        },
+        { id: 'bi2', title: 'Yard Work', description: 'Help neighbors', duration: '8 min', xp: 25,
+          content: {
+            intro: "Yard work is one of the most reliable kid businesses. Neighbors always need help!",
+            sections: [
+              { title: "Services to Offer", text: "🌿 Lawn mowing\n🍂 Raking leaves\n🌸 Weeding gardens\n💧 Watering plants\n❄️ Shoveling snow\n🗑️ Taking out trash bins", funFact: "Lawn care is a $100+ billion industry. There's plenty of room for you!" },
+              { title: "Pricing Ideas", text: "Common rates:\n\n🌿 Small lawn: $15-20\n🌿 Medium lawn: $25-35\n🍂 Leaf raking: $10-20/hour\n❄️ Snow shoveling: $20-40/driveway\n\nCharge more for bigger jobs!" },
+              { title: "Build Regulars", text: "Best money comes from repeat customers:\n\n📅 Weekly mowing contracts\n🍂 Seasonal cleanup deals\n💰 Monthly billing\n⭐ Great work = referrals" }
+            ],
+            activity: "Go door to door on your street. Ask if anyone needs yard help. You might find customers today!"
+          }
+        },
+        { id: 'bi3', title: 'Crafts', description: 'Sell what you make', duration: '8 min', xp: 25,
+          content: {
+            intro: "Are you creative? Turn your hobby into money by selling what you make!",
+            sections: [
+              { title: "Craft Ideas", text: "Things kids sell:\n\n📿 Jewelry (bracelets, necklaces)\n🎨 Art (paintings, drawings)\n🧶 Knitted/crocheted items\n🕯️ Candles or soap\n📔 Journals/notebooks\n🎄 Holiday decorations", funFact: "Etsy has over 7 million sellers - many started as kids!" },
+              { title: "Where to Sell", text: "Selling spots:\n\n🏫 School (craft fairs, friends)\n⛪ Community events\n🏪 Local shops (consignment)\n💻 Online (Etsy, with parent help)\n🏠 Garage sales\n🎄 Holiday markets" },
+              { title: "Making Profit", text: "Calculate carefully:\n\n💎 Materials cost: $2\n⏰ Your time: 30 min\n💰 Sell for: $10\n📈 Profit: $8!\n\nChoose crafts that don't take too long to make." }
+            ],
+            activity: "Pick a craft you can make. Calculate: supplies cost + time = what price should you charge?"
+          }
+        },
+        { id: 'bi4', title: 'Online', description: 'Sell on internet', duration: '10 min', xp: 30,
+          content: {
+            intro: "The internet lets you reach customers ANYWHERE in the world. Here's how kids can sell online!",
+            sections: [
+              { title: "Online Business Ideas", text: "Digital businesses:\n\n🎮 Game streaming (YouTube/Twitch)\n📹 YouTube videos\n📚 Tutoring via Zoom\n🎨 Digital art commissions\n📝 Writing/blogging\n💻 Coding simple websites", funFact: "Ryan Kaji made $30 million on YouTube at age 9!" },
+              { title: "Getting Started", text: "With parent help:\n\n📱 Start a social media (Instagram/TikTok)\n🛒 Open an Etsy shop\n💻 Make a simple website\n📧 Build an email list\n🎥 Start a YouTube channel" },
+              { title: "Online Safety", text: "IMPORTANT rules:\n\n👨‍👩‍👧 Parents must help with accounts\n🚫 Never share personal info\n📍 Don't reveal your location\n💬 Be careful in comments\n🚨 Tell adults if something's wrong" }
+            ],
+            quiz: { question: "What's a key rule for kids online?", options: ["Share everything", "Get parent help", "Work alone"], correct: 1 },
+            activity: "With a parent, explore one online platform. What could you create/sell there?"
+          }
+        },
       ]},
     ]
   },
@@ -868,7 +1210,17 @@ const worldsData: World[] = [
     description: 'Skills for success',
     topics: [
       { id: 'goals', name: 'Goals', emoji: '🎯', lessons: [
-        { id: 'gl1', title: 'Dream Big', description: 'What do you want', duration: '8 min', xp: 20 },
+        { id: 'gl1', title: 'Dream Big', description: 'What do you want', duration: '8 min', xp: 20,
+          content: {
+            intro: "Before you can achieve great things, you have to DREAM great things! Let's unlock your imagination.",
+            sections: [
+              { title: "Why Dream Big?", text: "Big dreams:\n\n🚀 Push you to grow\n🔥 Give you motivation\n🧠 Change how you think\n🌟 Make life exciting\n💪 Help you reach higher", funFact: "Every amazing achievement started as someone's 'crazy' dream!" },
+              { title: "What Do You Want?", text: "Dream about:\n\n🎯 What you want to BE\n🌍 Where you want to GO\n🏆 What you want to ACHIEVE\n💰 What you want to HAVE\n❤️ Who you want to HELP", funFact: "Astronaut Mae Jemison dreamed of space as a child - and became the first Black woman in space!" },
+              { title: "No Limits... Yet", text: "When dreaming:\n\n🚫 Don't think about HOW\n🚫 Don't think about money\n🚫 Don't think about time\n\nJust DREAM. We'll figure out the 'how' later!" }
+            ],
+            activity: "Write down 10 dreams - big, small, wild, anything. Don't edit yourself. Just dream!"
+          }
+        },
         { id: 'gl2', title: 'SMART Goals', description: 'Goals that work', duration: '10 min', xp: 25,
           content: {
             intro: "Not all goals are created equal! SMART goals are much more likely to succeed.",
@@ -880,24 +1232,153 @@ const worldsData: World[] = [
             activity: "Take a goal you have and rewrite it as a SMART goal. Make it specific, measurable, achievable, relevant, and time-bound!"
           }
         },
-        { id: 'gl3', title: 'Break It Down', description: 'Small steps', duration: '10 min', xp: 25 },
-        { id: 'gl4', title: 'Stay Motivated', description: 'Keep going', duration: '10 min', xp: 25 },
+        { id: 'gl3', title: 'Break It Down', description: 'Small steps', duration: '10 min', xp: 25,
+          content: {
+            intro: "Big goals can feel overwhelming. The secret? Break them into tiny, doable steps!",
+            sections: [
+              { title: "Chunk It Up", text: "Big Goal: Read 12 books this year\n\n📚 That's 1 book per month\n📖 That's about 10 pages per day\n👀 That's just 15 minutes of reading!\n\nSuddenly it's easy!", funFact: "You can eat an elephant one bite at a time! (Not really - elephants are friends)" },
+              { title: "The Ladder Method", text: "Create stepping stones:\n\n🎯 GOAL: Learn guitar\n📌 Step 1: Get a guitar\n📌 Step 2: Learn 3 chords\n📌 Step 3: Play a simple song\n📌 Step 4: Learn more chords\n📌 Step 5: Play harder songs\n\nOne step at a time!" },
+              { title: "Daily Actions", text: "Every goal needs DAILY habits:\n\n💪 Fitness goal → Exercise 10 min/day\n📚 Learning goal → Study 20 min/day\n💰 Savings goal → Save $1/day\n\nSmall daily actions = Big yearly results!" }
+            ],
+            quiz: { question: "How do you achieve big goals?", options: ["All at once", "Break into small steps", "Just wish for it"], correct: 1 },
+            activity: "Take one of your big dreams. Break it into 5 smaller steps. What's step 1?"
+          }
+        },
+        { id: 'gl4', title: 'Stay Motivated', description: 'Keep going', duration: '10 min', xp: 25,
+          content: {
+            intro: "Starting is easy. Finishing is hard. Here's how to stay motivated when it gets tough!",
+            sections: [
+              { title: "Why We Quit", text: "People give up because:\n\n😴 It gets boring\n😰 It gets hard\n⏰ Results take too long\n🎯 Goal seems too far\n💔 Fear of failure", funFact: "Most people quit just before they would have succeeded!" },
+              { title: "Stay Motivated", text: "Tricks that work:\n\n📊 Track your progress visually\n🎉 Celebrate small wins\n👥 Find an accountability buddy\n📸 Remember your WHY\n🎁 Reward yourself at milestones" },
+              { title: "When You Want to Quit", text: "Ask yourself:\n\n🤔 Why did I start?\n⏰ How far have I come?\n😢 How will I feel if I quit?\n🏆 How will I feel if I succeed?\n\nThen take ONE more small step." }
+            ],
+            activity: "Create a progress tracker for a goal. Put it where you'll see it every day!"
+          }
+        },
       ]},
       { id: 'problems', name: 'Problem Solving', emoji: '🧩', lessons: [
-        { id: 'ps1', title: 'Identify', description: "What's wrong", duration: '8 min', xp: 20 },
-        { id: 'ps2', title: 'Solutions', description: 'Many ways to fix', duration: '10 min', xp: 25 },
-        { id: 'ps3', title: 'Pick Best', description: 'Choose wisely', duration: '10 min', xp: 25 },
-        { id: 'ps4', title: 'Learn', description: 'From mistakes', duration: '10 min', xp: 25 },
+        { id: 'ps1', title: 'Identify', description: "What's wrong", duration: '8 min', xp: 20,
+          content: {
+            intro: "You can't fix a problem until you really understand it. Let's learn to identify problems clearly!",
+            sections: [
+              { title: "Find the Real Problem", text: "Often what we THINK is the problem isn't the REAL problem:\n\n😡 'I'm bad at math' → Real problem: Need more practice\n😤 'My friend is mean' → Real problem: Miscommunication\n💸 'I never have money' → Real problem: Spending too fast", funFact: "Einstein said: 'If I had an hour to solve a problem, I'd spend 55 minutes understanding it.'" },
+              { title: "Ask Questions", text: "Dig deeper by asking:\n\n❓ WHAT exactly is wrong?\n❓ WHEN did it start?\n❓ WHERE does it happen?\n❓ WHO is involved?\n❓ WHY is this a problem?\n❓ HOW bad is it really?" },
+              { title: "Write It Down", text: "Put the problem in words:\n\n📝 'I struggle with ___ because ___'\n📝 'The problem is ___, which causes ___'\n📝 'I want ___ but ___ is in the way'\n\nClarity is power!" }
+            ],
+            quiz: { question: "What should you do first when solving a problem?", options: ["Act fast", "Understand it clearly", "Ignore it"], correct: 1 },
+            activity: "Think of a problem you have. Write it down clearly using the questions above."
+          }
+        },
+        { id: 'ps2', title: 'Solutions', description: 'Many ways to fix', duration: '10 min', xp: 25,
+          content: {
+            intro: "There's NEVER just one solution. The more options you create, the better your answer will be!",
+            sections: [
+              { title: "Brainstorm Freely", text: "Rules for brainstorming:\n\n🚫 No bad ideas\n🚫 Don't judge yet\n✅ Quantity over quality\n✅ Build on others' ideas\n✅ Get wild and creative\n\nAim for at least 10 possible solutions!", funFact: "The first idea is rarely the best idea. Keep going!" },
+              { title: "Solution Types", text: "Think about different approaches:\n\n🔨 Direct fix - Attack the problem head-on\n🔄 Work around - Avoid the problem entirely\n✂️ Remove - Eliminate what causes it\n🤝 Get help - Ask someone who knows\n⏰ Wait - Sometimes time fixes things" },
+              { title: "The More the Better", text: "With 10 solutions:\n\n📊 You have OPTIONS\n🎯 Better chance of finding great one\n🧠 You think more creatively\n💪 You feel more in control" }
+            ],
+            activity: "Take your problem from last lesson. Brainstorm 10 possible solutions. Don't judge - just list!"
+          }
+        },
+        { id: 'ps3', title: 'Pick Best', description: 'Choose wisely', duration: '10 min', xp: 25,
+          content: {
+            intro: "Now you have solutions. But which one is BEST? Let's learn to choose wisely!",
+            sections: [
+              { title: "Evaluate Each Option", text: "For each solution, ask:\n\n✅ Will it actually work?\n⏰ How long will it take?\n💰 What does it cost?\n😰 What could go wrong?\n🎯 Does it solve the REAL problem?", funFact: "Smart people make pros and cons lists for big decisions!" },
+              { title: "The Decision Matrix", text: "Rate each solution 1-10 on:\n\n🎯 Effectiveness\n⏰ Speed\n💰 Cost\n😊 Ease\n\nAdd up scores. Highest wins!", funFact: "Writing it down removes emotion and shows the logical choice." },
+              { title: "Trust Your Gut", text: "After analysis, check your gut:\n\n😊 Does this feel right?\n💪 Am I excited to try it?\n😰 Am I avoiding something?\n\nSometimes intuition knows best!" }
+            ],
+            quiz: { question: "How do you pick the best solution?", options: ["Random guess", "First one you thought of", "Evaluate and compare"], correct: 2 },
+            activity: "Rate your 10 solutions from before. Which one scores highest? That's your plan!"
+          }
+        },
+        { id: 'ps4', title: 'Learn', description: 'From mistakes', duration: '10 min', xp: 25,
+          content: {
+            intro: "Mistakes aren't failures - they're lessons! The best problem solvers LEARN from what went wrong.",
+            sections: [
+              { title: "Mistakes Are Teachers", text: "Every mistake teaches:\n\n📚 What DOESN'T work\n🧠 New information\n💪 How to be stronger\n🔍 What to try differently\n\nNo successful person avoided all mistakes!", funFact: "Thomas Edison tried 10,000 ways to make a lightbulb. He said: 'I found 10,000 ways that don't work!'" },
+              { title: "The Learning Loop", text: "After every attempt:\n\n1️⃣ What happened?\n2️⃣ Why did it happen?\n3️⃣ What did I learn?\n4️⃣ What will I do differently?\n5️⃣ Try again!" },
+              { title: "Growth Mindset", text: "Two types of thinking:\n\n❌ Fixed: 'I failed. I'm not good at this.'\n✅ Growth: 'I failed. Now I know what to try next!'\n\nChoose growth. Always." }
+            ],
+            quiz: { question: "What should you do after a mistake?", options: ["Give up", "Learn from it", "Pretend it didn't happen"], correct: 1 },
+            activity: "Think of a recent mistake. What did you learn? What will you do differently next time?"
+          }
+        },
       ]},
       { id: 'communicate', name: 'Communication', emoji: '🗣️', lessons: [
-        { id: 'cm1', title: 'Listening', description: 'Really hear', duration: '8 min', xp: 20 },
-        { id: 'cm2', title: 'Speaking', description: 'Say what you mean', duration: '8 min', xp: 20 },
-        { id: 'cm3', title: 'Kindness', description: 'Kind words matter', duration: '8 min', xp: 20 },
+        { id: 'cm1', title: 'Listening', description: 'Really hear', duration: '8 min', xp: 20,
+          content: {
+            intro: "Listening is a SUPERPOWER. People who listen well have better relationships and learn faster!",
+            sections: [
+              { title: "Hearing vs Listening", text: "🔊 Hearing: Sound goes in your ears\n👂 Listening: You understand and care\n\nBig difference!\n\nMost people hear but don't really LISTEN.", funFact: "We remember only about 25% of what we hear. Active listening improves this dramatically!" },
+              { title: "Active Listening", text: "How to really listen:\n\n👀 Make eye contact\n📵 Put away distractions\n🤐 Don't interrupt\n🤔 Think about what they're saying\n❓ Ask follow-up questions\n🔄 Repeat back to confirm" },
+              { title: "Why It Matters", text: "Good listeners:\n\n🤝 Have better friendships\n📚 Learn more in school\n💼 Succeed at work\n❤️ Make people feel valued\n🧠 Remember more information" }
+            ],
+            quiz: { question: "What's the difference between hearing and listening?", options: ["Same thing", "Listening means you understand and care", "Hearing is better"], correct: 1 },
+            activity: "Next conversation, try active listening. Make eye contact, don't interrupt, and ask a question!"
+          }
+        },
+        { id: 'cm2', title: 'Speaking', description: 'Say what you mean', duration: '8 min', xp: 20,
+          content: {
+            intro: "Clear speaking helps people understand you. It's a skill you can practice!",
+            sections: [
+              { title: "Be Clear", text: "Tips for clear speaking:\n\n🎯 Know your main point\n📝 Keep it simple\n🐌 Speak slowly enough\n🔊 Speak loudly enough\n👀 Make eye contact\n😊 Use friendly body language", funFact: "People judge confidence by how clearly and calmly you speak!" },
+              { title: "THINK Before Speaking", text: "Ask yourself:\n\n✅ T - Is it TRUE?\n✅ H - Is it HELPFUL?\n✅ I - Is it INSPIRING?\n✅ N - Is it NECESSARY?\n✅ K - Is it KIND?\n\nIf not, maybe don't say it!" },
+              { title: "Practice Makes Better", text: "Get better at speaking:\n\n🪞 Practice in front of mirror\n📹 Record yourself\n🎭 Join drama or debate club\n👥 Speak up in class\n📖 Read out loud daily" }
+            ],
+            activity: "Practice explaining your favorite game/show to a parent. Can you be clear in under 1 minute?"
+          }
+        },
+        { id: 'cm3', title: 'Kindness', description: 'Kind words matter', duration: '8 min', xp: 20,
+          content: {
+            intro: "Your words have POWER. They can lift someone up or tear them down. Choose kindness!",
+            sections: [
+              { title: "Words Have Power", text: "Words can:\n\n😊 Make someone's day\n💪 Give courage to try\n❤️ Show love and care\n😢 Or... hurt deeply\n😰 Or... destroy confidence\n\nChoose wisely!", funFact: "People remember how you made them FEEL long after they forget what you said." },
+              { title: "Kind Words to Use", text: "Powerful phrases:\n\n'Thank you for...'\n'I appreciate you because...'\n'You're really good at...'\n'I'm proud of you for...'\n'You inspire me when...'\n'I believe in you!'" },
+              { title: "When It's Hard", text: "Even when frustrated:\n\n😤 Take a breath first\n🤔 Think before speaking\n💭 'How would I feel?'\n🔄 Find a kind way to say it\n❌ Never say something you can't take back" }
+            ],
+            quiz: { question: "Why should you choose kind words?", options: ["To be fake", "Words have power to help or hurt", "It doesn't matter"], correct: 1 },
+            activity: "Give 3 genuine compliments today. Notice how people react!"
+          }
+        },
       ]},
       { id: 'time', name: 'Time', emoji: '⏰', lessons: [
-        { id: 'tm1', title: 'Plan Your Day', description: 'Be organized', duration: '10 min', xp: 25 },
-        { id: 'tm2', title: 'Prioritize', description: 'Important first', duration: '10 min', xp: 25 },
-        { id: 'tm3', title: 'Focus', description: 'Avoid distractions', duration: '10 min', xp: 25 },
+        { id: 'tm1', title: 'Plan Your Day', description: 'Be organized', duration: '10 min', xp: 25,
+          content: {
+            intro: "Planning your day helps you get MORE done and feel LESS stressed. Let's learn how!",
+            sections: [
+              { title: "Why Plan?", text: "Without a plan:\n\n😵 You forget things\n⏰ You waste time deciding\n😫 Important stuff doesn't get done\n😰 You feel stressed\n\nWith a plan: You're in control!", funFact: "People who plan their day are 2x more likely to reach their goals!" },
+              { title: "Morning Planning", text: "Each morning (or night before):\n\n1️⃣ List what needs to be done\n2️⃣ Pick the TOP 3 most important\n3️⃣ Schedule time for each\n4️⃣ Leave buffer time for surprises\n5️⃣ Include fun too!" },
+              { title: "Your Schedule", text: "Simple daily plan:\n\n🌅 Morning routine (7-8am)\n📚 School/Learning (8am-3pm)\n🏃 Activity/sports (3-5pm)\n📝 Homework (5-6pm)\n🍽️ Family time (6-8pm)\n🎮 Free time (8-9pm)\n😴 Sleep!" }
+            ],
+            quiz: { question: "When should you plan your day?", options: ["Never", "Morning or night before", "Only on weekends"], correct: 1 },
+            activity: "Write out tomorrow's plan tonight. Follow it and see how it feels!"
+          }
+        },
+        { id: 'tm2', title: 'Prioritize', description: 'Important first', duration: '10 min', xp: 25,
+          content: {
+            intro: "Not everything is equally important. Learn to do important things FIRST!",
+            sections: [
+              { title: "Urgent vs Important", text: "Two types of tasks:\n\n🚨 Urgent: Needs attention NOW (alarm, phone)\n⭐ Important: Matters for your goals (studying, health)\n\nUrgent isn't always important!\nImportant isn't always urgent!", funFact: "Most people spend all day on urgent things and never do important things!" },
+              { title: "The Priority Matrix", text: "Four categories:\n\n1️⃣ Urgent + Important → Do FIRST\n2️⃣ Important not Urgent → Schedule it\n3️⃣ Urgent not Important → Can someone else do it?\n4️⃣ Neither → Don't do it!" },
+              { title: "Eat the Frog", text: "Mark Twain said: 'Eat a live frog first thing in the morning and nothing worse will happen the rest of the day.'\n\n🐸 = Your hardest task\n\nDo the hard thing FIRST, when you have the most energy!" }
+            ],
+            quiz: { question: "What should you do first?", options: ["Easy stuff", "Important stuff", "Fun stuff"], correct: 1 },
+            activity: "List everything you need to do. Star the 3 most important. Do those first tomorrow!"
+          }
+        },
+        { id: 'tm3', title: 'Focus', description: 'Avoid distractions', duration: '10 min', xp: 25,
+          content: {
+            intro: "In a world of distractions, FOCUS is a superpower. Here's how to build it!",
+            sections: [
+              { title: "The Distraction Problem", text: "Modern distractions:\n\n📱 Phone notifications\n💻 Social media\n🎮 Video games\n📺 TV/YouTube\n👥 Friends/texting\n\nEvery distraction breaks your focus!", funFact: "After a distraction, it takes 23 minutes to fully refocus!" },
+              { title: "Create Focus", text: "How to focus better:\n\n📱 Phone in another room\n🔕 Notifications OFF\n⏱️ Set a timer (25 min work, 5 min break)\n🎯 One thing at a time\n📍 Dedicated work spot\n🎵 Maybe focus music/white noise" },
+              { title: "The Pomodoro Technique", text: "Popular focus method:\n\n🍅 Work for 25 minutes\n☕ Break for 5 minutes\n🔄 Repeat 4 times\n🎉 Take a longer 15-30 min break\n\nShort bursts = better focus!" }
+            ],
+            quiz: { question: "What should you do with your phone while working?", options: ["Keep it close", "Put it in another room", "Check it every 5 minutes"], correct: 1 },
+            activity: "Try the Pomodoro technique! Set a timer for 25 min, work with no distractions, then take a break."
+          }
+        },
       ]},
     ]
   },
