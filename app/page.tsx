@@ -1117,7 +1117,23 @@ const worldsData: World[] = [
     id: 'business', name: 'Business', emoji: '🏪', accent: 'accent-pink',
     description: 'Start your empire',
     topics: [
-      { id: 'entrepreneur', name: 'Entrepreneur', emoji: '🚀', lessons: [
+      { id: 'entrepreneur', name: 'Entrepreneur', emoji: '🚀',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What is an entrepreneur?", options: ["Someone who works a regular job", "Someone who creates businesses to solve problems", "Someone who avoids work", "A type of worker"], correct: 1 },
+            { question: "Mikaila Ulmer started her lemonade business at age:", options: ["4", "18", "25", "30"], correct: 0 },
+            { question: "Every business starts by solving a:", options: ["Game", "Problem", "Puzzle", "Nothing"], correct: 1 },
+            { question: "Where do business ideas come from?", options: ["Only adults have them", "Problems you notice in daily life", "They fall from the sky", "You can't have ideas"], correct: 1 },
+            { question: "What did Moziah Bridges sell?", options: ["Lemonade", "Bow ties", "Cookies", "Apps"], correct: 1 },
+            { question: "Why is failing important for entrepreneurs?", options: ["It's not important", "You learn what doesn't work", "It means you should quit", "Successful people never fail"], correct: 1 },
+            { question: "A good business idea should:", options: ["Help no one", "Solve a problem people have", "Be too expensive", "Copy others exactly"], correct: 1 },
+            { question: "Kid entrepreneurs prove that:", options: ["Only adults can start businesses", "Age doesn't limit your potential", "Kids should just play", "Business is boring"], correct: 1 },
+            { question: "To find a business idea, you should:", options: ["Wait for it to appear", "Look for problems around you", "Copy someone else completely", "Give up"], correct: 1 },
+            { question: "The entrepreneurial mindset includes:", options: ["Giving up quickly", "Seeing problems as opportunities", "Avoiding all risk", "Never trying anything new"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'en1', title: 'What is One', description: 'People who start things', duration: '8 min', xp: 25,
           content: {
             intro: "An entrepreneur is someone who starts a business to solve a problem and make money doing it!",
@@ -1163,7 +1179,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'start', name: 'Starting', emoji: '🎬', lessons: [
+      { id: 'start', name: 'Starting', emoji: '🎬',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What's the first step to starting a business?", options: ["Quit school", "Have an idea that solves a problem", "Get rich first", "Wait until you're old"], correct: 1 },
+            { question: "A lemonade stand teaches you about:", options: ["Nothing", "Costs, pricing, and profit", "Just making lemonade", "Being thirsty"], correct: 1 },
+            { question: "Profit is:", options: ["How much you spend", "Revenue minus costs", "The price you charge", "Free money"], correct: 1 },
+            { question: "Products are things you:", options: ["Borrow", "Sell (physical items)", "Throw away", "Ignore"], correct: 1 },
+            { question: "Services are things you:", options: ["Make and keep", "Do for others (actions)", "Buy for yourself", "Don't need"], correct: 1 },
+            { question: "Where can you find customers?", options: ["They find themselves", "Neighbors, family, online, local events", "Nowhere", "Only in stores"], correct: 1 },
+            { question: "Pricing should cover:", options: ["Just your costs", "Your costs plus profit", "Nothing", "Random amounts"], correct: 1 },
+            { question: "The 'Rule of 3' in pricing means:", options: ["Always charge $3", "Charge 3x your costs", "Give 3 free items", "Work 3 hours"], correct: 1 },
+            { question: "When starting, you should:", options: ["Start huge", "Start small and learn", "Never start", "Borrow lots of money"], correct: 1 },
+            { question: "The best way to learn business is:", options: ["Read only", "Try it and learn from mistakes", "Wait until perfect", "Don't try"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'sb1', title: 'Lemonade Stand', description: 'First business', duration: '10 min', xp: 30,
           content: {
             intro: "The lemonade stand is the perfect first business. Let's learn how to run one profitably!",
@@ -1212,7 +1244,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'ideas', name: 'Ideas', emoji: '💡', lessons: [
+      { id: 'ideas', name: 'Ideas', emoji: '💡',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "Pet sitting is a good kid business because:", options: ["Pets are dangerous", "People need help with their pets", "It pays nothing", "Nobody has pets"], correct: 1 },
+            { question: "What skills do you learn from yard work business?", options: ["None", "Hard work, reliability, physical fitness", "How to be lazy", "Video game skills"], correct: 1 },
+            { question: "Handmade crafts can be sold:", options: ["Nowhere", "At craft fairs, online, to neighbors", "Only in big stores", "Never"], correct: 1 },
+            { question: "Online businesses for kids might include:", options: ["Nothing is possible", "Teaching, art commissions, content creation", "Only adults can do online work", "Hacking"], correct: 1 },
+            { question: "What makes a craft business successful?", options: ["Making random things", "Creating something unique that people want", "Copying exactly what others make", "Using expensive materials only"], correct: 1 },
+            { question: "Yard work services might include:", options: ["Only mowing", "Mowing, raking, weeding, snow shoveling", "Nothing", "Indoor cleaning only"], correct: 1 },
+            { question: "Pet sitting responsibilities include:", options: ["Just playing", "Feeding, walking, keeping pets safe", "Nothing much", "Taking the pet home"], correct: 1 },
+            { question: "The best business idea is one where you:", options: ["Hate the work", "Enjoy helping and can charge fairly", "Copy exactly what friends do", "Do something impossible"], correct: 1 },
+            { question: "To grow a business, you should:", options: ["Stop working", "Get more customers and improve your service", "Do less work", "Charge nothing"], correct: 1 },
+            { question: "Which is TRUE about kid businesses?", options: ["They never work", "They teach real-world skills", "Only rich kids can try", "You need a college degree"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'bi1', title: 'Pet Sitting', description: 'Help with animals', duration: '8 min', xp: 25,
           content: {
             intro: "Love animals? Pet sitting is a great business - and you get paid to play with pets!",
@@ -1267,7 +1315,23 @@ const worldsData: World[] = [
     id: 'lifeskills', name: 'Life Skills', emoji: '🏆', accent: 'accent-amber',
     description: 'Skills for success',
     topics: [
-      { id: 'goals', name: 'Goals', emoji: '🎯', lessons: [
+      { id: 'goals', name: 'Goals', emoji: '🎯',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What does SMART stand for in goal-setting?", options: ["Super, Magical, Amazing, Real, True", "Specific, Measurable, Achievable, Relevant, Time-bound", "Small, Medium, Average, Regular, Tiny", "Start, Move, Act, Run, Try"], correct: 1 },
+            { question: "Why should you write down your goals?", options: ["To waste paper", "You're more likely to achieve them", "It's required", "Goals don't need writing"], correct: 1 },
+            { question: "How do you achieve big goals?", options: ["All at once", "Break them into small steps", "Just hope", "Wait for luck"], correct: 1 },
+            { question: "What's a good daily habit for reaching goals?", options: ["Skip it when tired", "Take small action daily", "Only work on weekends", "Think about it but don't act"], correct: 1 },
+            { question: "What should you do when you want to quit?", options: ["Give up immediately", "Remember your WHY and take one more step", "Blame others", "Start something new"], correct: 1 },
+            { question: "A 'dream big' mindset means:", options: ["Being unrealistic", "Believing you can achieve amazing things", "Daydreaming all day", "Not setting goals"], correct: 1 },
+            { question: "Progress tracking helps because:", options: ["It wastes time", "You can see how far you've come", "It's fun to draw", "Goals track themselves"], correct: 1 },
+            { question: "The Ladder Method is:", options: ["Using actual ladders", "Creating stepping stones to your goal", "Climbing buildings", "A game"], correct: 1 },
+            { question: "Who are accountability buddies?", options: ["People who judge you", "Friends who help you stay on track", "Strangers", "Nobody important"], correct: 1 },
+            { question: "Growth mindset means believing:", options: ["You can't change", "Failure teaches you what to try next", "Smart people don't fail", "Give up when it's hard"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'gl1', title: 'Dream Big', description: 'What do you want', duration: '8 min', xp: 20,
           content: {
             intro: "Before you can achieve great things, you have to DREAM great things! Let's unlock your imagination.",
@@ -1314,7 +1378,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'problems', name: 'Problem Solving', emoji: '🧩', lessons: [
+      { id: 'problems', name: 'Problem Solving', emoji: '🧩',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What should you do FIRST when facing a problem?", options: ["Panic", "Understand it clearly", "Ignore it", "Blame someone"], correct: 1 },
+            { question: "How many solutions should you brainstorm?", options: ["Just 1", "At least 10", "None", "Only 2"], correct: 1 },
+            { question: "What's the rule during brainstorming?", options: ["Judge every idea harshly", "No bad ideas - write them all", "Only accept perfect ideas", "Don't share ideas"], correct: 1 },
+            { question: "How do you pick the best solution?", options: ["Random guess", "Evaluate and compare options", "Always pick the first one", "Ask a coin"], correct: 1 },
+            { question: "After a mistake, you should:", options: ["Give up forever", "Learn from it", "Pretend it didn't happen", "Blame others"], correct: 1 },
+            { question: "Growth mindset says failure is:", options: ["The end", "A learning opportunity", "Shameful", "Permanent"], correct: 1 },
+            { question: "Einstein said he'd spend 55 minutes:", options: ["Solving the problem", "Understanding the problem", "Taking a break", "Giving up"], correct: 1 },
+            { question: "The 'Learning Loop' includes:", options: ["What happened, why, what I learned", "Forget and move on", "Blame and complain", "Give up quickly"], correct: 0 },
+            { question: "Why evaluate multiple solutions?", options: ["It's required by law", "Better chance of finding a great one", "To waste time", "Solutions are all the same"], correct: 1 },
+            { question: "The best problem solvers:", options: ["Never make mistakes", "Learn from every attempt", "Work alone always", "Give up early"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'ps1', title: 'Identify', description: "What's wrong", duration: '8 min', xp: 20,
           content: {
             intro: "You can't fix a problem until you really understand it. Let's learn to identify problems clearly!",
@@ -1363,7 +1443,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'communicate', name: 'Communication', emoji: '🗣️', lessons: [
+      { id: 'communicate', name: 'Communication', emoji: '🗣️',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What's the difference between hearing and listening?", options: ["Same thing", "Listening means you understand and care", "Hearing is harder", "No difference"], correct: 1 },
+            { question: "Active listening includes:", options: ["Interrupting often", "Making eye contact and asking questions", "Looking at your phone", "Thinking about other things"], correct: 1 },
+            { question: "THINK before speaking means checking if it's:", options: ["Tall, Heavy, Itchy, Narrow, Kind", "True, Helpful, Inspiring, Necessary, Kind", "Tiny, Hard, Interesting, New, Cool", "None of these"], correct: 1 },
+            { question: "Kind words can:", options: ["Only hurt people", "Lift someone up and give courage", "Don't matter at all", "Make you weak"], correct: 1 },
+            { question: "When frustrated, you should:", options: ["Say whatever you feel", "Take a breath first and think", "Yell loudly", "Blame others"], correct: 1 },
+            { question: "Good listeners:", options: ["Have fewer friends", "Have better relationships", "Don't need to practice", "Always interrupt"], correct: 1 },
+            { question: "Clear speaking includes:", options: ["Mumbling quietly", "Knowing your main point and speaking clearly", "Using big confusing words", "Talking as fast as possible"], correct: 1 },
+            { question: "Why practice speaking?", options: ["It's required", "You get better and more confident", "It doesn't help", "To annoy others"], correct: 1 },
+            { question: "People remember how you made them:", options: ["Look", "Feel", "Smell", "Sound"], correct: 1 },
+            { question: "Genuine compliments:", options: ["Are fake and useless", "Make people feel valued", "Should never be given", "Are always wrong"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'cm1', title: 'Listening', description: 'Really hear', duration: '8 min', xp: 20,
           content: {
             intro: "Listening is a SUPERPOWER. People who listen well have better relationships and learn faster!",
@@ -1400,7 +1496,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'time', name: 'Time', emoji: '⏰', lessons: [
+      { id: 'time', name: 'Time', emoji: '⏰',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "When should you plan your day?", options: ["Never", "Morning or night before", "Only on birthdays", "After everything is done"], correct: 1 },
+            { question: "People who plan their day are:", options: ["Wasting time", "2x more likely to reach their goals", "Less productive", "Boring"], correct: 1 },
+            { question: "What's the difference between urgent and important?", options: ["Same thing", "Urgent needs attention now, important matters for goals", "Important is louder", "Urgent can wait forever"], correct: 1 },
+            { question: "'Eat the frog' means:", options: ["Have breakfast first", "Do the hardest task first", "Eat actual frogs", "Skip hard work"], correct: 1 },
+            { question: "What's the Pomodoro Technique?", options: ["Eating tomatoes", "25 min work, 5 min break cycles", "Working non-stop", "Taking only breaks"], correct: 1 },
+            { question: "After a distraction, how long to fully refocus?", options: ["1 minute", "23 minutes", "5 seconds", "No time at all"], correct: 1 },
+            { question: "To focus better, you should:", options: ["Keep phone nearby", "Put phone in another room", "Check it every minute", "Leave notifications on"], correct: 1 },
+            { question: "What should you do FIRST with tasks?", options: ["Easy stuff", "Important stuff", "Fun stuff", "Nothing"], correct: 1 },
+            { question: "Short work bursts help because:", options: ["They're lazy", "They improve focus", "They waste time", "They don't help"], correct: 1 },
+            { question: "Planning helps you feel:", options: ["More stressed", "Less stressed and in control", "Confused", "Tired"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'tm1', title: 'Plan Your Day', description: 'Be organized', duration: '10 min', xp: 25,
           content: {
             intro: "Planning your day helps you get MORE done and feel LESS stressed. Let's learn how!",
