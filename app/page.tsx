@@ -1434,140 +1434,162 @@ export default function FutureKidsAcademy() {
     setQuizSubmitted(false);
   };
 
-  // Celebration
+  // Celebration - More fun!
   if (showCelebration) {
     return (
-      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-6">
-        <div className="text-center animate-fade-in">
-          <div className="text-7xl mb-6">🎉</div>
-          <h1 className="font-display text-4xl text-[#3D3935] mb-4">Level Up!</h1>
-          <p className="text-xl text-[#9A9086]">You&apos;re now Level {level}</p>
-          <p className="text-[#9A9086] mt-4">Keep going, superstar!</p>
+      <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="stars">
+          <span className="star" style={{top: '10%', left: '10%'}}>⭐</span>
+          <span className="star" style={{top: '20%', left: '80%', animationDelay: '0.5s'}}>🌟</span>
+          <span className="star" style={{top: '70%', left: '20%', animationDelay: '1s'}}>✨</span>
+          <span className="star" style={{top: '60%', left: '70%', animationDelay: '0.3s'}}>⭐</span>
+          <span className="star" style={{top: '40%', left: '50%', animationDelay: '0.8s'}}>🌟</span>
+        </div>
+        <div className="text-center celebrate">
+          <div className="text-8xl mb-6 animate-bounce-slow">🎉</div>
+          <h1 className="font-display text-5xl text-[#9B59B6] mb-4">LEVEL UP!</h1>
+          <div className="level-badge mx-auto mb-6" style={{width: '100px', height: '100px', fontSize: '2.5rem'}}>
+            {level}
+          </div>
+          <p className="text-xl text-[#7F8C8D]">You&apos;re now Level {level}!</p>
+          <p className="text-[#7F8C8D] mt-4 text-lg">Keep going, superstar! 🌟</p>
         </div>
       </div>
     );
   }
 
-  // Lesson View (with content!)
+  // Lesson View (with content!) - Colorful & Fun!
   if (selectedLesson && selectedTopic && selectedWorld) {
     const isComplete = completedLessons.includes(selectedLesson.id);
     const content = selectedLesson.content;
+    const colors = ['#E74C3C', '#3498DB', '#2ECC71', '#9B59B6', '#F39C12', '#1ABC9C'];
     
     return (
-      <div className="min-h-screen bg-[#FAF7F2] texture">
-        <header className="px-6 py-5 border-b border-[#E8DDD4] sticky top-0 bg-[#FAF7F2]/95 backdrop-blur z-10">
-          <button onClick={() => { setSelectedLesson(null); resetQuiz(); }} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
-            <span>←</span> Back
-          </button>
+      <div className="min-h-screen pb-8">
+        {/* Colorful Header */}
+        <header className="bg-gradient-to-r from-[#3498DB] to-[#9B59B6] text-white px-6 py-4 sticky top-0 z-10 shadow-lg">
+          <div className="max-w-lg mx-auto flex items-center justify-between">
+            <button onClick={() => { setSelectedLesson(null); resetQuiz(); }} className="flex items-center gap-2 font-bold hover:scale-105 transition-transform">
+              <span className="text-2xl">←</span> Back
+            </button>
+            <div className="xp-badge">+{selectedLesson.xp} XP</div>
+          </div>
         </header>
-        <main className="max-w-lg mx-auto px-6 py-8">
-          {/* Header */}
-          <div className={`${selectedWorld.accent} rounded-2xl p-8 text-center mb-6`}>
-            <span className="text-5xl block mb-4">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl text-[#3D3935] mb-2">{selectedLesson.title}</h1>
-            <p className="text-[#9A9086]">{selectedLesson.description}</p>
-            <div className="flex justify-center gap-4 mt-4 text-sm text-[#9A9086]">
-              <span>⏱ {selectedLesson.duration}</span>
-              <span>+{selectedLesson.xp} XP</span>
-            </div>
+
+        <main className="max-w-lg mx-auto px-6 py-6">
+          {/* Lesson Title Card */}
+          <div className="fun-card p-6 mb-6 text-center">
+            <span className="emoji-visual block mb-4">{selectedTopic.emoji}</span>
+            <h1 className="font-display text-3xl text-[#2C3E50] mb-2">{selectedLesson.title}</h1>
+            <p className="text-[#7F8C8D] text-lg">{selectedLesson.description}</p>
           </div>
 
           {/* Content */}
           {content ? (
             <div className="space-y-6">
-              {/* Intro */}
-              <div className="card p-6">
-                <p className="text-[#3D3935] text-lg leading-relaxed">{content.intro}</p>
+              {/* Intro Box */}
+              <div className="info-box info-box-blue">
+                <span className="info-box-title">📚 Let&apos;s Learn!</span>
+                <p className="text-[#2C3E50] text-lg leading-relaxed pt-2">{content.intro}</p>
               </div>
 
-              {/* Sections */}
+              {/* Sections - Each with different color */}
               {content.sections.map((section, idx) => (
-                <div key={idx} className="card p-6">
-                  <h2 className="font-display text-xl text-[#3D3935] mb-4">{section.title}</h2>
-                  <p className="text-[#3D3935] leading-relaxed whitespace-pre-line">{section.text}</p>
-                  {section.funFact && (
-                    <div className="mt-4 p-4 bg-[#FFF9E6] rounded-xl border border-[#FFE4A0]">
-                      <p className="text-sm">
-                        <span className="font-bold">🌟 Fun Fact:</span> {section.funFact}
-                      </p>
-                    </div>
-                  )}
+                <div key={idx} className={`info-box ${idx % 2 === 0 ? 'info-box-green' : 'info-box-purple'}`}>
+                  <span className="info-box-title">{section.title}</span>
+                  <div className="pt-4">
+                    <p className="text-[#2C3E50] leading-relaxed whitespace-pre-line text-lg">{section.text}</p>
+                    {section.funFact && (
+                      <div className="fun-fact mt-4">
+                        <p className="text-[#2C3E50] font-medium">
+                          <span className="text-lg">Fun Fact: </span>{section.funFact}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
 
-              {/* Quiz */}
+              {/* Quiz - More colorful */}
               {content.quiz && (
-                <div className="card p-6">
-                  <h2 className="font-display text-xl text-[#3D3935] mb-4">🧠 Quick Quiz!</h2>
-                  <p className="text-[#3D3935] mb-4 font-medium">{content.quiz.question}</p>
-                  <div className="space-y-2">
+                <div className="fun-card p-6">
+                  <div className="text-center mb-6">
+                    <span className="text-5xl block mb-2">🧠</span>
+                    <h2 className="font-display text-2xl text-[#E74C3C]">Quiz Time!</h2>
+                  </div>
+                  <p className="text-[#2C3E50] mb-6 font-bold text-xl text-center">{content.quiz.question}</p>
+                  <div className="space-y-3">
                     {content.quiz.options.map((option, idx) => (
                       <button
                         key={idx}
                         onClick={() => !quizSubmitted && setQuizAnswer(idx)}
-                        className={`w-full p-4 rounded-xl text-left transition-all ${
+                        className={`quiz-option w-full text-lg ${
                           quizSubmitted
                             ? idx === content.quiz!.correct
-                              ? 'bg-[#E8F5E9] border-2 border-[#4CAF50]'
+                              ? 'correct'
                               : idx === quizAnswer
-                                ? 'bg-[#FFEBEE] border-2 border-[#EF5350]'
-                                : 'bg-[#F5F0EB] border-2 border-transparent'
+                                ? 'incorrect'
+                                : ''
                             : quizAnswer === idx
-                              ? 'bg-[#E3F2FD] border-2 border-[#2196F3]'
-                              : 'bg-[#F5F0EB] border-2 border-transparent hover:border-[#D4A574]'
+                              ? 'selected'
+                              : ''
                         }`}
                       >
+                        <span className="mr-3">{['A', 'B', 'C', 'D'][idx]}.</span>
                         {option}
-                        {quizSubmitted && idx === content.quiz!.correct && ' ✓'}
+                        {quizSubmitted && idx === content.quiz!.correct && ' ✅'}
+                        {quizSubmitted && idx === quizAnswer && idx !== content.quiz!.correct && ' ❌'}
                       </button>
                     ))}
                   </div>
                   {!quizSubmitted && quizAnswer !== null && (
-                    <button
-                      onClick={() => setQuizSubmitted(true)}
-                      className="btn-primary w-full mt-4"
-                    >
-                      Check Answer
+                    <button onClick={() => setQuizSubmitted(true)} className="btn-fun btn-fun-green w-full mt-6">
+                      Check My Answer! 🎯
                     </button>
                   )}
                   {quizSubmitted && (
-                    <p className={`mt-4 text-center font-medium ${quizAnswer === content.quiz.correct ? 'text-[#4CAF50]' : 'text-[#EF5350]'}`}>
-                      {quizAnswer === content.quiz.correct ? '🎉 Correct! Great job!' : '😅 Not quite! The correct answer is highlighted.'}
-                    </p>
+                    <div className={`mt-6 p-4 rounded-xl text-center text-xl font-bold ${
+                      quizAnswer === content.quiz.correct 
+                        ? 'bg-[#D5F4E6] text-[#27AE60]' 
+                        : 'bg-[#FADBD8] text-[#E74C3C]'
+                    }`}>
+                      {quizAnswer === content.quiz.correct 
+                        ? '🎉 AWESOME! You got it!' 
+                        : '😅 Oops! Check the green answer!'}
+                    </div>
                   )}
                 </div>
               )}
 
-              {/* Activity */}
+              {/* Activity Box */}
               {content.activity && (
-                <div className="card p-6 bg-[#E8F5E9]">
-                  <h2 className="font-display text-xl text-[#2E7D32] mb-4">🎯 Try This!</h2>
-                  <p className="text-[#3D3935]">{content.activity}</p>
+                <div className="activity-box">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-4xl">🎯</span>
+                    <h2 className="font-display text-2xl text-[#1ABC9C]">Try This Activity!</h2>
+                  </div>
+                  <p className="text-[#2C3E50] text-lg">{content.activity}</p>
                 </div>
               )}
             </div>
           ) : (
-            /* Placeholder for lessons without content yet */
-            <div className="card p-6 mb-6">
-              <div className="aspect-video bg-[#E8DDD4] rounded-xl flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <span className="text-4xl block mb-2">📚</span>
-                  <p className="text-[#9A9086] text-sm">Full lesson content coming soon!</p>
-                </div>
-              </div>
+            <div className="fun-card p-8 text-center">
+              <span className="text-6xl block mb-4">🚧</span>
+              <h2 className="font-display text-2xl text-[#7F8C8D]">Coming Soon!</h2>
+              <p className="text-[#7F8C8D] mt-2">We&apos;re creating awesome content for this lesson!</p>
             </div>
           )}
 
           {/* Complete Button */}
           <div className="mt-8">
             {isComplete ? (
-              <div className="card p-6 text-center bg-[#E8F5E9]">
-                <span className="text-3xl block mb-2">✓</span>
-                <p className="font-medium text-[#2E7D32]">Lesson Complete!</p>
+              <div className="fun-card p-6 text-center bg-gradient-to-r from-[#D5F4E6] to-[#A3E4BC]">
+                <span className="text-5xl block mb-2">🏆</span>
+                <p className="font-display text-2xl text-[#27AE60]">Lesson Complete!</p>
               </div>
             ) : (
-              <button onClick={() => completeLesson(selectedLesson)} className="btn-primary w-full text-center">
-                {content ? "I Learned This! ✨" : "Complete Lesson"}
+              <button onClick={() => completeLesson(selectedLesson)} className="btn-fun btn-fun-green w-full text-xl">
+                {content ? "I Learned This! 🌟" : "Complete Lesson ✨"}
               </button>
             )}
           </div>
@@ -1576,26 +1598,31 @@ export default function FutureKidsAcademy() {
     );
   }
 
-  // Topic View
+  // Topic View - Colorful!
   if (selectedTopic && selectedWorld) {
     const done = selectedTopic.lessons.filter(l => completedLessons.includes(l.id)).length;
     const total = selectedTopic.lessons.length;
     return (
-      <div className="min-h-screen bg-[#FAF7F2] texture">
-        <header className="px-6 py-5 border-b border-[#E8DDD4] sticky top-0 bg-[#FAF7F2]/95 backdrop-blur z-10">
-          <button onClick={() => setSelectedTopic(null)} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
-            <span>←</span> Back
-          </button>
+      <div className="min-h-screen pb-8">
+        <header className="bg-gradient-to-r from-[#3498DB] to-[#2ECC71] text-white px-6 py-4 sticky top-0 z-10 shadow-lg">
+          <div className="max-w-lg mx-auto">
+            <button onClick={() => setSelectedTopic(null)} className="flex items-center gap-2 font-bold hover:scale-105 transition-transform">
+              <span className="text-2xl">←</span> Back
+            </button>
+          </div>
         </header>
-        <main className="max-w-lg mx-auto px-6 py-8">
-          <div className={`${selectedWorld.accent} rounded-2xl p-6 text-center mb-6`}>
-            <span className="text-4xl block mb-3">{selectedTopic.emoji}</span>
-            <h1 className="font-display text-2xl text-[#3D3935]">{selectedTopic.name}</h1>
-            <p className="text-[#9A9086] text-sm mt-2">{done} of {total} complete</p>
-            <div className="progress-track h-2 mt-4">
-              <div className="progress-fill h-2" style={{ width: `${(done/total)*100}%` }} />
+        <main className="max-w-lg mx-auto px-6 py-6">
+          {/* Topic Header */}
+          <div className="fun-card p-6 text-center mb-6">
+            <span className="emoji-visual block mb-3">{selectedTopic.emoji}</span>
+            <h1 className="font-display text-3xl text-[#2C3E50] mb-2">{selectedTopic.name}</h1>
+            <p className="text-[#7F8C8D] mb-4">{done} of {total} lessons complete</p>
+            <div className="progress-bar">
+              <div className="progress-fill" style={{ width: `${(done/total)*100}%` }} />
             </div>
           </div>
+
+          {/* Lessons List */}
           <div className="space-y-3">
             {selectedTopic.lessons.map((lesson, idx) => {
               const isDone = completedLessons.includes(lesson.id);
@@ -1606,23 +1633,29 @@ export default function FutureKidsAcademy() {
                   key={lesson.id}
                   onClick={() => !isLocked && setSelectedLesson(lesson)}
                   disabled={isLocked}
-                  className={`card w-full p-4 flex items-center gap-4 text-left ${isLocked ? 'opacity-50' : ''} ${isDone ? 'bg-[#E8F5E9] border-[#C8E6C9]' : ''}`}
+                  className={`lesson-card w-full flex items-center gap-4 text-left ${isLocked ? 'locked' : ''} ${isDone ? 'completed' : ''}`}
                 >
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
-                    isDone ? 'bg-[#4CAF50] text-white' : isLocked ? 'bg-[#E8DDD4] text-[#9A9086]' : 'bg-[#E8DDD4] text-[#3D3935]'
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold shadow-md ${
+                    isDone 
+                      ? 'bg-gradient-to-br from-[#2ECC71] to-[#27AE60] text-white' 
+                      : isLocked 
+                        ? 'bg-gray-200 text-gray-400' 
+                        : 'bg-gradient-to-br from-[#3498DB] to-[#2980B9] text-white'
                   }`}>
                     {isLocked ? '🔒' : isDone ? '✓' : idx + 1}
                   </div>
                   <div className="flex-1">
-                    <p className={`font-medium ${isDone ? 'text-[#2E7D32]' : 'text-[#3D3935]'}`}>
+                    <p className={`font-bold text-lg ${isDone ? 'text-[#27AE60]' : 'text-[#2C3E50]'}`}>
                       {lesson.title}
-                      {hasContent && !isDone && <span className="ml-2 text-xs text-[#D4A574]">✨ Full lesson!</span>}
                     </p>
-                    <p className="text-[#9A9086] text-sm">{lesson.description}</p>
+                    <p className="text-[#7F8C8D] text-sm">{lesson.description}</p>
+                    {hasContent && !isDone && (
+                      <span className="inline-block mt-1 text-xs bg-[#FEF9E7] text-[#F39C12] px-2 py-1 rounded-full font-bold">✨ Full Lesson!</span>
+                    )}
                   </div>
-                  <div className="text-right text-sm">
-                    <p className="text-[#9A9086]">{lesson.duration}</p>
-                    <p className={isDone ? 'text-[#4CAF50]' : 'text-[#D4A574]'}>+{lesson.xp}</p>
+                  <div className="text-right">
+                    <div className="xp-badge text-sm py-1 px-3">+{lesson.xp}</div>
+                    <p className="text-xs text-[#7F8C8D] mt-1">{lesson.duration}</p>
                   </div>
                 </button>
               );
@@ -1633,36 +1666,57 @@ export default function FutureKidsAcademy() {
     );
   }
 
-  // World View
+  // World View - Colorful!
   if (selectedWorld) {
+    const totalLessons = selectedWorld.topics.reduce((a,t) => a + t.lessons.length, 0);
+    const doneLessons = selectedWorld.topics.reduce((a,t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
+    
     return (
-      <div className="min-h-screen bg-[#FAF7F2] texture">
-        <header className="px-6 py-5 border-b border-[#E8DDD4] sticky top-0 bg-[#FAF7F2]/95 backdrop-blur z-10">
-          <button onClick={() => setSelectedWorld(null)} className="text-[#9A9086] hover:text-[#3D3935] font-medium flex items-center gap-2">
-            <span>←</span> All Subjects
-          </button>
-        </header>
-        <main className="max-w-lg mx-auto px-6 py-8">
-          <div className={`${selectedWorld.accent} rounded-2xl p-8 text-center mb-8`}>
-            <span className="text-5xl block mb-4">{selectedWorld.emoji}</span>
-            <h1 className="font-display text-3xl text-[#3D3935]">{selectedWorld.name}</h1>
-            <p className="text-[#9A9086] mt-2">{selectedWorld.description}</p>
+      <div className="min-h-screen pb-8">
+        <header className="bg-gradient-to-r from-[#9B59B6] to-[#E74C3C] text-white px-6 py-4 sticky top-0 z-10 shadow-lg">
+          <div className="max-w-lg mx-auto">
+            <button onClick={() => setSelectedWorld(null)} className="flex items-center gap-2 font-bold hover:scale-105 transition-transform">
+              <span className="text-2xl">←</span> All Subjects
+            </button>
           </div>
-          <div className="space-y-3">
-            {selectedWorld.topics.map(topic => {
+        </header>
+        <main className="max-w-lg mx-auto px-6 py-6">
+          {/* World Header */}
+          <div className="fun-card p-8 text-center mb-8">
+            <span className="text-7xl block mb-4 animate-bounce-slow">{selectedWorld.emoji}</span>
+            <h1 className="font-display text-4xl text-[#2C3E50] mb-2">{selectedWorld.name}</h1>
+            <p className="text-[#7F8C8D] text-lg mb-4">{selectedWorld.description}</p>
+            <div className="inline-block bg-[#EBF5FB] px-4 py-2 rounded-full">
+              <span className="font-bold text-[#3498DB]">{doneLessons}/{totalLessons} lessons complete</span>
+            </div>
+          </div>
+
+          {/* Topics Grid */}
+          <h2 className="font-display text-2xl text-[#2C3E50] mb-4 text-center">Choose a Topic</h2>
+          <div className="space-y-4">
+            {selectedWorld.topics.map((topic, idx) => {
               const done = topic.lessons.filter(l => completedLessons.includes(l.id)).length;
               const total = topic.lessons.length;
+              const colors = ['topic-card-red', 'topic-card-blue', 'topic-card-green', 'topic-card-yellow', 'topic-card-purple', 'topic-card-orange', 'topic-card-pink', 'topic-card-teal'];
               return (
-                <button key={topic.id} onClick={() => setSelectedTopic(topic)} className="card w-full p-5 flex items-center gap-4 text-left">
-                  <span className="text-3xl">{topic.emoji}</span>
+                <button 
+                  key={topic.id} 
+                  onClick={() => setSelectedTopic(topic)} 
+                  className={`fun-card ${colors[idx % colors.length]} w-full p-5 flex items-center gap-4 text-left`}
+                >
+                  <span className="text-4xl">{topic.emoji}</span>
                   <div className="flex-1">
-                    <p className="font-medium text-[#3D3935]">{topic.name}</p>
-                    <p className="text-[#9A9086] text-sm">{done}/{total} lessons</p>
+                    <p className="font-display text-xl text-[#2C3E50]">{topic.name}</p>
+                    <p className="text-[#7F8C8D] text-sm">{topic.lessons.length} lessons</p>
                   </div>
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium ${
-                    done === total ? 'bg-[#E8F5E9] text-[#4CAF50]' : 'bg-[#E8DDD4] text-[#9A9086]'
-                  }`}>
-                    {done === total ? '✓' : `${Math.round((done/total)*100)}%`}
+                  <div className="text-right">
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shadow-md ${
+                      done === total 
+                        ? 'bg-gradient-to-br from-[#2ECC71] to-[#27AE60] text-white' 
+                        : 'bg-white text-[#3498DB] border-2 border-[#3498DB]'
+                    }`}>
+                      {done === total ? '✓' : `${Math.round((done/total)*100)}%`}
+                    </div>
                   </div>
                 </button>
               );
@@ -1673,89 +1727,115 @@ export default function FutureKidsAcademy() {
     );
   }
 
-  // Home View
+  // Home View - Colorful & Animated!
   const school = worldsData.filter(w => ['math','reading','science','history'].includes(w.id));
   const future = worldsData.filter(w => !['math','reading','science','history'].includes(w.id));
+  const worldColors: Record<string, string> = {
+    math: 'world-bubble-math',
+    reading: 'world-bubble-reading',
+    science: 'world-bubble-science',
+    history: 'world-bubble-history',
+    law: 'world-bubble-law',
+    engineering: 'world-bubble-engineering',
+    money: 'world-bubble-money',
+    investing: 'world-bubble-investing',
+    business: 'world-bubble-business',
+    lifeskills: 'world-bubble-lifeskills',
+  };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] texture">
-      {/* Header */}
-      <header className="px-6 pt-12 pb-8 border-b border-[#E8DDD4]">
-        <div className="max-w-lg mx-auto">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB6C1] via-[#98D8C8] to-[#87CEEB] flex items-center justify-center shadow-lg">
-              <span className="text-2xl">🚀</span>
+    <div className="min-h-screen pb-8">
+      {/* Fun Header */}
+      <header className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white px-6 pt-8 pb-10 relative overflow-hidden">
+        <div className="stars">
+          <span className="star" style={{top: '10%', left: '5%'}}>⭐</span>
+          <span className="star" style={{top: '30%', left: '90%', animationDelay: '0.5s'}}>🌟</span>
+          <span className="star" style={{top: '60%', left: '15%', animationDelay: '1s'}}>✨</span>
+        </div>
+        <div className="max-w-lg mx-auto relative z-10">
+          {/* Logo & Title */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center shadow-lg animate-bounce-slow">
+              <span className="text-4xl">🚀</span>
             </div>
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-[#9A9086]">Learning Academy</p>
-              <h1 className="font-display text-3xl text-[#3D3935]">FutureKids</h1>
+              <h1 className="font-display text-4xl">FutureKids</h1>
+              <p className="text-white/70 text-sm">Learning Academy</p>
             </div>
           </div>
           
-          {/* Stats */}
-          <div className="flex gap-3 mt-6">
-            <div className="streak-badge px-4 py-2 rounded-full">
-              <span className="text-sm font-medium text-[#B8856C]">🔥 {streak} days</span>
+          {/* Stats Row */}
+          <div className="flex gap-3 mb-6">
+            <div className="streak-badge">
+              🔥 {streak} days
             </div>
-            <div className="xp-badge px-4 py-2 rounded-full">
-              <span className="text-sm font-medium text-[#B89F6C]">⭐ {xp} XP</span>
+            <div className="xp-badge">
+              ⭐ {xp} XP
             </div>
           </div>
           
-          {/* Level */}
-          <div className="card mt-6 p-5">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="level-badge w-14 h-14 rounded-full flex items-center justify-center">
-                <span className="text-xl font-semibold text-[#8B7355]">{level}</span>
+          {/* Level Progress */}
+          <div className="bg-white/10 backdrop-blur rounded-2xl p-4">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="level-badge">
+                {level}
               </div>
-              <div>
-                <p className="font-medium text-[#3D3935]">Level {level}</p>
-                <p className="text-sm text-[#9A9086]">{100 - (xp % 100)} XP to next level</p>
+              <div className="flex-1">
+                <p className="font-bold text-lg">Level {level} Learner</p>
+                <p className="text-white/70 text-sm">{100 - (xp % 100)} XP to Level {level + 1}</p>
               </div>
             </div>
-            <div className="progress-track h-3">
-              <div className="progress-fill h-3" style={{ width: `${progress}%` }} />
+            <div className="progress-bar">
+              <div className="progress-fill" style={{ width: `${progress}%` }} />
             </div>
           </div>
         </div>
       </header>
 
       <main className="max-w-lg mx-auto px-6 py-8">
-        {/* School */}
+        {/* School Section */}
         <div className="mb-10">
-          <div className="section-divider">
-            <span className="text-xs tracking-[0.2em] uppercase text-[#9A9086]">School Essentials</span>
+          <div className="section-header mb-6">
+            <h2 className="font-display text-2xl text-[#2C3E50]">📚 School Stuff</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             {school.map(world => {
               const total = world.topics.reduce((a,t) => a + t.lessons.length, 0);
               const done = world.topics.reduce((a,t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
               return (
-                <button key={world.id} onClick={() => setSelectedWorld(world)} className={`world-card ${world.accent} p-6 text-center`}>
-                  <span className="text-4xl block mb-3">{world.emoji}</span>
-                  <p className="font-display text-lg text-[#3D3935]">{world.name}</p>
-                  <p className="text-xs text-[#9A9086] mt-1">{done}/{total} lessons</p>
+                <button key={world.id} onClick={() => setSelectedWorld(world)} className="flex flex-col items-center gap-3 group">
+                  <div className={`world-bubble ${worldColors[world.id] || 'world-bubble-math'}`}>
+                    <span className="text-3xl">{world.emoji}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="font-display text-lg text-[#2C3E50] group-hover:text-[#3498DB] transition-colors">{world.name}</p>
+                    <p className="text-xs text-[#7F8C8D]">{done}/{total} ✓</p>
+                  </div>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Future */}
+        {/* Future Skills Section */}
         <div>
-          <div className="section-divider">
-            <span className="text-xs tracking-[0.2em] uppercase text-[#9A9086]">Future Skills</span>
+          <div className="section-header mb-2">
+            <h2 className="font-display text-2xl text-[#2C3E50]">🌟 Future Skills</h2>
           </div>
-          <p className="text-center text-sm text-[#9A9086] mb-6">What school doesn&apos;t teach you</p>
-          <div className="grid grid-cols-2 gap-4">
+          <p className="text-center text-[#7F8C8D] mb-6">What school doesn&apos;t teach you!</p>
+          <div className="grid grid-cols-3 gap-4">
             {future.map(world => {
               const total = world.topics.reduce((a,t) => a + t.lessons.length, 0);
               const done = world.topics.reduce((a,t) => a + t.lessons.filter(l => completedLessons.includes(l.id)).length, 0);
               return (
-                <button key={world.id} onClick={() => setSelectedWorld(world)} className={`world-card ${world.accent} p-6 text-center`}>
-                  <span className="text-4xl block mb-3">{world.emoji}</span>
-                  <p className="font-display text-lg text-[#3D3935]">{world.name}</p>
-                  <p className="text-xs text-[#9A9086] mt-1">{done}/{total} lessons</p>
+                <button key={world.id} onClick={() => setSelectedWorld(world)} className="flex flex-col items-center gap-2 group">
+                  <div className={`world-bubble ${worldColors[world.id] || 'world-bubble-money'}`} style={{width: '70px', height: '70px'}}>
+                    <span className="text-2xl">{world.emoji}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="font-display text-sm text-[#2C3E50] group-hover:text-[#9B59B6] transition-colors">{world.name}</p>
+                    <p className="text-xs text-[#7F8C8D]">{done}/{total}</p>
+                  </div>
                 </button>
               );
             })}
@@ -1763,8 +1843,8 @@ export default function FutureKidsAcademy() {
         </div>
       </main>
 
-      <footer className="text-center py-8 border-t border-[#E8DDD4]">
-        <p className="text-xs text-[#9A9086]">Made with love for Carter, Kingston & Sister</p>
+      <footer className="text-center py-8">
+        <p className="text-sm text-[#7F8C8D]">Made with 💜 for Carter, Kingston & Sister</p>
       </footer>
     </div>
   );
