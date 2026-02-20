@@ -27,11 +27,21 @@ interface LessonContent {
   activity?: string;
 }
 
+interface TopicQuiz {
+  questions: {
+    question: string;
+    options: string[];
+    correct: number;
+  }[];
+  passingScore: number; // How many correct to pass (e.g., 8 out of 10)
+}
+
 interface Topic {
   id: string;
   name: string;
   emoji: string;
   lessons: Lesson[];
+  topicQuiz?: TopicQuiz; // 10-question quiz to master the topic
 }
 
 interface World {
@@ -739,7 +749,23 @@ const worldsData: World[] = [
     id: 'money', name: 'Money', emoji: '💰', accent: 'accent-green',
     description: 'How money works',
     topics: [
-      { id: 'basics', name: 'Basics', emoji: '🪙', lessons: [
+      { id: 'basics', name: 'Basics', emoji: '🪙', 
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "How many cents is a nickel worth?", options: ["1 cent", "5 cents", "10 cents", "25 cents"], correct: 1 },
+            { question: "Which coin is the smallest in size?", options: ["Penny", "Nickel", "Dime", "Quarter"], correct: 2 },
+            { question: "Who is on the $100 bill?", options: ["George Washington", "Abraham Lincoln", "Benjamin Franklin", "Alexander Hamilton"], correct: 2 },
+            { question: "How many cents equal one dollar?", options: ["10 cents", "50 cents", "100 cents", "200 cents"], correct: 2 },
+            { question: "3 quarters + 2 dimes = ?", options: ["75 cents", "85 cents", "95 cents", "$1.05"], correct: 2 },
+            { question: "Which is a NEED, not a WANT?", options: ["Video games", "Food", "Designer clothes", "Theme park trip"], correct: 1 },
+            { question: "You pay $5 for a $3.50 item. Your change is:", options: ["$1.00", "$1.50", "$2.00", "$2.50"], correct: 1 },
+            { question: "What does saving money mean?", options: ["Spending it all now", "Keeping some for later", "Giving it away", "Hiding it"], correct: 1 },
+            { question: "The 'counting up' method helps you:", options: ["Count coins", "Make change", "Save money", "Earn money"], correct: 1 },
+            { question: "Which costs more to make than it's worth?", options: ["Quarter", "Dime", "Nickel", "Penny"], correct: 3 }
+          ]
+        },
+        lessons: [
         { id: 'mb1', title: 'Coins & Bills', description: 'Know your money', duration: '8 min', xp: 15,
           content: {
             intro: "Money comes in coins (metal) and bills (paper). Let's learn what each one is worth!",
@@ -786,7 +812,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'saving', name: 'Saving', emoji: '🐷', lessons: [
+      { id: 'saving', name: 'Saving', emoji: '🐷',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What should you do FIRST when you get money?", options: ["Spend it", "Save some", "Count it twice", "Give it away"], correct: 1 },
+            { question: "What is 'paying yourself first'?", options: ["Getting paid for work", "Saving before spending", "Buying treats", "Borrowing money"], correct: 1 },
+            { question: "A short-term goal might take:", options: ["10 years", "A few weeks or months", "Your whole life", "One day"], correct: 1 },
+            { question: "Interest is:", options: ["A fee you pay", "Money the bank pays YOU", "A type of coin", "A savings goal"], correct: 1 },
+            { question: "Why do piggy banks work well?", options: ["They're cute", "They make saving harder to spend", "They earn interest", "Banks give them free"], correct: 1 },
+            { question: "What does a savings account do that a piggy bank doesn't?", options: ["Hold coins", "Look pretty", "Earn interest", "Keep money safe"], correct: 2 },
+            { question: "People who write down their goals are:", options: ["Less likely to achieve them", "42% more likely to achieve them", "Wasting time", "Being silly"], correct: 1 },
+            { question: "Emergency savings are for:", options: ["Buying toys", "Unexpected problems", "Fun trips", "Snacks"], correct: 1 },
+            { question: "If you save $1 a day for a year, you'll have:", options: ["$100", "$265", "$365", "$500"], correct: 2 },
+            { question: "A long-term goal might be:", options: ["Buying candy", "College fund", "This week's game", "Tomorrow's lunch"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'sv1', title: 'Why Save', description: 'For the future', duration: '8 min', xp: 20,
           content: {
             intro: "Saving money means keeping some for later instead of spending it all now. It's one of the most important money skills!",
@@ -834,7 +876,23 @@ const worldsData: World[] = [
           }
         },
       ]},
-      { id: 'earning', name: 'Earning', emoji: '💵', lessons: [
+      { id: 'earning', name: 'Earning', emoji: '💵',
+        topicQuiz: {
+          passingScore: 8,
+          questions: [
+            { question: "What does 'trading time for money' mean?", options: ["Selling clocks", "Working a job", "Saving time", "Borrowing money"], correct: 1 },
+            { question: "Which is a way kids can earn money?", options: ["Asking for more allowance", "Dog walking", "Taking from others", "Finding it on the ground"], correct: 1 },
+            { question: "What's a benefit of doing chores for allowance?", options: ["It's free money", "You learn responsibility", "You don't have to work", "Parents do it for you"], correct: 1 },
+            { question: "A kid business is:", options: ["Illegal for kids", "A way to create income", "Only for adults", "Too hard"], correct: 1 },
+            { question: "What skill do you learn from earning money?", options: ["How to spend faster", "Work ethic", "How to be lazy", "Nothing"], correct: 1 },
+            { question: "Why is earning better than just getting money?", options: ["It's easier", "You appreciate it more", "It's faster", "You get more"], correct: 1 },
+            { question: "What's one way to earn money from neighbors?", options: ["Borrow without asking", "Yard work or pet sitting", "Take their stuff", "Do nothing"], correct: 1 },
+            { question: "Starting a business teaches you:", options: ["To be greedy", "Problem-solving and responsibility", "To quit easily", "Nothing useful"], correct: 1 },
+            { question: "What should you do with money you earn?", options: ["Spend it all immediately", "Save some, spend some wisely", "Hide it and forget", "Give it all away"], correct: 1 },
+            { question: "The best earners are people who:", options: ["Wait for money to appear", "Create value for others", "Only think about themselves", "Never work hard"], correct: 1 }
+          ]
+        },
+        lessons: [
         { id: 'er1', title: 'Jobs', description: 'How to earn', duration: '8 min', xp: 20,
           content: {
             intro: "Money doesn't grow on trees - you have to EARN it! Let's learn how.",
@@ -1395,10 +1453,17 @@ export default function FutureKidsAcademy() {
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [masteredTopics, setMasteredTopics] = useState<string[]>([]);
   const [streak, setStreak] = useState(3);
   const [showCelebration, setShowCelebration] = useState(false);
   const [quizAnswer, setQuizAnswer] = useState<number | null>(null);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
+  // Topic Quiz State
+  const [showTopicQuiz, setShowTopicQuiz] = useState(false);
+  const [topicQuizAnswers, setTopicQuizAnswers] = useState<(number | null)[]>([]);
+  const [topicQuizCurrentQ, setTopicQuizCurrentQ] = useState(0);
+  const [topicQuizComplete, setTopicQuizComplete] = useState(false);
+  const [topicQuizScore, setTopicQuizScore] = useState(0);
 
   useEffect(() => {
     const saved = localStorage.getItem('futurekids-progress');
@@ -1407,13 +1472,14 @@ export default function FutureKidsAcademy() {
       setXp(data.xp || 0);
       setLevel(data.level || 1);
       setCompletedLessons(data.completedLessons || []);
+      setMasteredTopics(data.masteredTopics || []);
       setStreak(data.streak || 3);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('futurekids-progress', JSON.stringify({ xp, level, completedLessons, streak }));
-  }, [xp, level, completedLessons, streak]);
+    localStorage.setItem('futurekids-progress', JSON.stringify({ xp, level, completedLessons, masteredTopics, streak }));
+  }, [xp, level, completedLessons, masteredTopics, streak]);
 
   const progress = Math.min((xp % 100) / 100 * 100, 100);
 
@@ -1432,6 +1498,55 @@ export default function FutureKidsAcademy() {
   const resetQuiz = () => {
     setQuizAnswer(null);
     setQuizSubmitted(false);
+  };
+
+  // Start Topic Quiz
+  const startTopicQuiz = () => {
+    if (!selectedTopic?.topicQuiz) return;
+    setTopicQuizAnswers(new Array(selectedTopic.topicQuiz.questions.length).fill(null));
+    setTopicQuizCurrentQ(0);
+    setTopicQuizComplete(false);
+    setTopicQuizScore(0);
+    setShowTopicQuiz(true);
+  };
+
+  // Submit Topic Quiz Answer
+  const submitTopicQuizAnswer = (answerIdx: number) => {
+    if (!selectedTopic?.topicQuiz) return;
+    const newAnswers = [...topicQuizAnswers];
+    newAnswers[topicQuizCurrentQ] = answerIdx;
+    setTopicQuizAnswers(newAnswers);
+  };
+
+  // Next Question or Finish
+  const nextTopicQuestion = () => {
+    if (!selectedTopic?.topicQuiz) return;
+    if (topicQuizCurrentQ < selectedTopic.topicQuiz.questions.length - 1) {
+      setTopicQuizCurrentQ(topicQuizCurrentQ + 1);
+    } else {
+      // Calculate score
+      let score = 0;
+      selectedTopic.topicQuiz.questions.forEach((q, i) => {
+        if (topicQuizAnswers[i] === q.correct) score++;
+      });
+      setTopicQuizScore(score);
+      setTopicQuizComplete(true);
+      
+      // Check if passed
+      if (score >= selectedTopic.topicQuiz.passingScore && !masteredTopics.includes(selectedTopic.id)) {
+        setMasteredTopics([...masteredTopics, selectedTopic.id]);
+        const bonusXp = 100;
+        setXp(xp + bonusXp);
+      }
+    }
+  };
+
+  // Exit Topic Quiz
+  const exitTopicQuiz = () => {
+    setShowTopicQuiz(false);
+    setTopicQuizAnswers([]);
+    setTopicQuizCurrentQ(0);
+    setTopicQuizComplete(false);
   };
 
   // Celebration - More fun!
@@ -1454,6 +1569,124 @@ export default function FutureKidsAcademy() {
           <p className="text-xl text-[#7F8C8D]">You&apos;re now Level {level}!</p>
           <p className="text-[#7F8C8D] mt-4 text-lg">Keep going, superstar! 🌟</p>
         </div>
+      </div>
+    );
+  }
+
+  // Topic Quiz View - 10 Question Challenge!
+  if (showTopicQuiz && selectedTopic?.topicQuiz) {
+    const quiz = selectedTopic.topicQuiz;
+    const currentQuestion = quiz.questions[topicQuizCurrentQ];
+    const currentAnswer = topicQuizAnswers[topicQuizCurrentQ];
+    const passed = topicQuizScore >= quiz.passingScore;
+
+    if (topicQuizComplete) {
+      return (
+        <div className="min-h-screen pb-8">
+          <header className="bg-gradient-to-r from-[#9B59B6] to-[#E74C3C] text-white px-6 py-4">
+            <div className="max-w-lg mx-auto">
+              <h1 className="font-display text-2xl text-center">Quiz Complete!</h1>
+            </div>
+          </header>
+          <main className="max-w-lg mx-auto px-6 py-8">
+            <div className={`fun-card p-8 text-center ${passed ? 'bg-gradient-to-br from-[#D5F4E6] to-[#A3E4BC]' : 'bg-gradient-to-br from-[#FADBD8] to-[#F5B7B1]'}`}>
+              <span className="text-8xl block mb-4">{passed ? '🏆' : '📚'}</span>
+              <h1 className="font-display text-4xl text-[#2C3E50] mb-4">
+                {passed ? 'YOU PASSED!' : 'Keep Learning!'}
+              </h1>
+              <p className="text-2xl font-bold mb-4">
+                Score: {topicQuizScore} / {quiz.questions.length}
+              </p>
+              <p className="text-lg text-[#7F8C8D] mb-6">
+                {passed 
+                  ? `Amazing! You've mastered ${selectedTopic.name}! +100 XP bonus!` 
+                  : `You need ${quiz.passingScore} correct to pass. Review the lessons and try again!`}
+              </p>
+              <div className="space-y-3">
+                {passed ? (
+                  <button onClick={exitTopicQuiz} className="btn-fun btn-fun-green w-full">
+                    Continue Learning 🚀
+                  </button>
+                ) : (
+                  <>
+                    <button onClick={() => { setTopicQuizComplete(false); setTopicQuizCurrentQ(0); setTopicQuizAnswers(new Array(quiz.questions.length).fill(null)); }} className="btn-fun w-full">
+                      Try Again 🔄
+                    </button>
+                    <button onClick={exitTopicQuiz} className="btn-fun btn-fun-red w-full">
+                      Back to Lessons 📖
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </main>
+        </div>
+      );
+    }
+
+    return (
+      <div className="min-h-screen pb-8">
+        <header className="bg-gradient-to-r from-[#E74C3C] to-[#F39C12] text-white px-6 py-4">
+          <div className="max-w-lg mx-auto flex items-center justify-between">
+            <button onClick={exitTopicQuiz} className="flex items-center gap-2 font-bold">
+              <span className="text-xl">✕</span>
+            </button>
+            <div className="text-center">
+              <p className="font-bold text-lg">{selectedTopic.name} Quiz</p>
+              <p className="text-sm opacity-80">Question {topicQuizCurrentQ + 1} of {quiz.questions.length}</p>
+            </div>
+            <div className="w-10" />
+          </div>
+        </header>
+
+        {/* Progress dots */}
+        <div className="bg-white py-4 shadow-sm">
+          <div className="max-w-lg mx-auto px-6">
+            <div className="flex justify-center gap-2">
+              {quiz.questions.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-4 h-4 rounded-full transition-all ${
+                    i === topicQuizCurrentQ 
+                      ? 'bg-[#E74C3C] scale-125' 
+                      : topicQuizAnswers[i] !== null 
+                        ? 'bg-[#2ECC71]' 
+                        : 'bg-gray-200'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <main className="max-w-lg mx-auto px-6 py-6">
+          <div className="fun-card p-6 mb-6">
+            <div className="text-center mb-6">
+              <span className="text-5xl block mb-4">🧠</span>
+              <p className="text-xl font-bold text-[#2C3E50]">{currentQuestion.question}</p>
+            </div>
+            <div className="space-y-3">
+              {currentQuestion.options.map((option, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => submitTopicQuizAnswer(idx)}
+                  className={`quiz-option w-full text-lg ${currentAnswer === idx ? 'selected' : ''}`}
+                >
+                  <span className="inline-block w-8 h-8 rounded-full bg-[#3498DB] text-white font-bold mr-3 text-center leading-8">
+                    {['A', 'B', 'C', 'D'][idx]}
+                  </span>
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {currentAnswer !== null && (
+            <button onClick={nextTopicQuestion} className="btn-fun btn-fun-green w-full text-xl">
+              {topicQuizCurrentQ === quiz.questions.length - 1 ? 'Finish Quiz! 🎯' : 'Next Question →'}
+            </button>
+          )}
+        </main>
       </div>
     );
   }
@@ -1602,6 +1835,10 @@ export default function FutureKidsAcademy() {
   if (selectedTopic && selectedWorld) {
     const done = selectedTopic.lessons.filter(l => completedLessons.includes(l.id)).length;
     const total = selectedTopic.lessons.length;
+    const allLessonsDone = done === total;
+    const isMastered = masteredTopics.includes(selectedTopic.id);
+    const hasQuiz = !!selectedTopic.topicQuiz;
+
     return (
       <div className="min-h-screen pb-8">
         <header className="bg-gradient-to-r from-[#3498DB] to-[#2ECC71] text-white px-6 py-4 sticky top-0 z-10 shadow-lg">
@@ -1613,14 +1850,44 @@ export default function FutureKidsAcademy() {
         </header>
         <main className="max-w-lg mx-auto px-6 py-6">
           {/* Topic Header */}
-          <div className="fun-card p-6 text-center mb-6">
+          <div className={`fun-card p-6 text-center mb-6 ${isMastered ? 'bg-gradient-to-br from-[#D5F4E6] to-[#A3E4BC]' : ''}`}>
             <span className="emoji-visual block mb-3">{selectedTopic.emoji}</span>
             <h1 className="font-display text-3xl text-[#2C3E50] mb-2">{selectedTopic.name}</h1>
+            {isMastered && (
+              <div className="mb-3">
+                <span className="inline-block bg-[#27AE60] text-white px-4 py-2 rounded-full font-bold">🏆 MASTERED!</span>
+              </div>
+            )}
             <p className="text-[#7F8C8D] mb-4">{done} of {total} lessons complete</p>
             <div className="progress-bar">
               <div className="progress-fill" style={{ width: `${(done/total)*100}%` }} />
             </div>
           </div>
+
+          {/* Topic Quiz Button - Shows when all lessons done */}
+          {allLessonsDone && hasQuiz && !isMastered && (
+            <div className="fun-card p-6 mb-6 text-center bg-gradient-to-r from-[#F39C12] to-[#E74C3C]">
+              <span className="text-5xl block mb-3">🎯</span>
+              <h2 className="font-display text-2xl text-white mb-2">Ready for the Challenge?</h2>
+              <p className="text-white/80 mb-4">Pass the 10-question quiz to master this topic and earn +100 XP!</p>
+              <button onClick={startTopicQuiz} className="btn-fun bg-white text-[#E74C3C] hover:bg-gray-100">
+                Take the Quiz! 🧠
+              </button>
+            </div>
+          )}
+
+          {/* Already Mastered */}
+          {isMastered && (
+            <div className="fun-card p-6 mb-6 text-center bg-[#D5F4E6]">
+              <span className="text-4xl block mb-2">🏆</span>
+              <p className="font-bold text-[#27AE60]">You&apos;ve mastered this topic!</p>
+              {hasQuiz && (
+                <button onClick={startTopicQuiz} className="text-sm text-[#3498DB] underline mt-2">
+                  Take quiz again for fun
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Lessons List */}
           <div className="space-y-3">
